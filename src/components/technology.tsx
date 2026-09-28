@@ -6,17 +6,81 @@ import { fadeUp } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 import { cn } from "@/lib/utils";
 
-const TECH_CATEGORIES = [
+const CATEGORIES = [
   {
-    category: "FRONTEND & CORE",
-    technologies: ["Next.js", "React", "TypeScript"],
-    glowPos: "top-[-10%] right-[-10%]"
+    num: "01",
+    id: "frontend",
+    title: "PRODUCT & FRONTEND",
+    colSpan: "md:col-span-1",
+    technologies: [
+      { name: "Next.js", monogram: "N", desc: "Application framework" },
+      { name: "React", monogram: "R" },
+      { name: "TypeScript", monogram: "TS", desc: "Static typing" },
+      { name: "JavaScript", monogram: "JS" },
+    ],
+    glowPos: "top-[-20%] right-[-10%]"
   },
   {
-    category: "STYLING & MOTION",
-    technologies: ["Tailwind CSS", "Framer Motion"],
-    glowPos: "bottom-[-10%] left-[-10%]"
-  }
+    num: "02",
+    id: "backend",
+    title: "BACKEND & APIs",
+    colSpan: "md:col-span-1",
+    technologies: [
+      { name: "Node.js", monogram: "N" },
+      { name: "Python", monogram: "PY", desc: "Logic & processing" },
+      { name: "REST APIs", monogram: "API" },
+    ],
+    glowPos: "bottom-[-20%] left-[-10%]"
+  },
+  {
+    num: "03",
+    id: "ai",
+    title: "AI & INTELLIGENCE",
+    colSpan: "md:col-span-2",
+    desc: "Turning data into useful systems, automation, and intelligent product experiences.",
+    technologies: [
+      { name: "Machine Learning", monogram: "ML" },
+      { name: "Computer Vision", monogram: "CV" },
+      { name: "Data Analysis", monogram: "DA" },
+      { name: "AI APIs", monogram: "AI" },
+    ],
+    glowPos: "top-[-30%] right-[-10%] w-[600px] h-[600px]",
+    isFeatured: true
+  },
+  {
+    num: "04",
+    id: "data",
+    title: "DATA & DATABASES",
+    colSpan: "md:col-span-1",
+    technologies: [
+      { name: "PostgreSQL", monogram: "PG", desc: "Relational data" },
+      { name: "Supabase", monogram: "SB" },
+      { name: "Firebase", monogram: "FB" },
+    ],
+    glowPos: "top-[-10%] left-[-10%]"
+  },
+  {
+    num: "05",
+    id: "design",
+    title: "DESIGN & MOTION",
+    colSpan: "md:col-span-1",
+    technologies: [
+      { name: "Tailwind CSS", monogram: "TW" },
+      { name: "Framer Motion", monogram: "FM" },
+    ],
+    glowPos: "bottom-[-10%] right-[-10%]"
+  },
+  {
+    num: "06",
+    id: "cloud",
+    title: "CLOUD & DELIVERY",
+    colSpan: "md:col-span-2 lg:col-span-1",
+    technologies: [
+      { name: "Vercel", monogram: "V", desc: "Edge deployment" },
+      { name: "GitHub", monogram: "GH" },
+    ],
+    glowPos: "top-[-10%] right-[-10%]"
+  },
 ];
 
 export function Technology() {
@@ -44,41 +108,66 @@ export function Technology() {
             Technology <br className="hidden sm:block" />
             <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">we build with.</em>
           </h2>
-          <p className="mt-6 text-[16px] text-[var(--color-brand-text-secondary)] max-w-[500px] mx-auto">
-            We rely on robust, modern, and production-tested technologies that ensure performance, scalability, and maintainability.
+          <p className="mt-6 text-[16px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[540px] mx-auto">
+            We choose technologies based on the problem, the product, and the environment — building with tools that keep products fast, maintainable, and ready to evolve.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-[900px] mx-auto">
-          {TECH_CATEGORIES.map((cat, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1100px] mx-auto">
+          {CATEGORIES.map((cat, i) => (
             <motion.div
-              key={cat.category}
+              key={cat.id}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-              className="group bg-[var(--color-brand-card)] border border-[var(--color-brand-border)] rounded-2xl p-8 lg:p-12 relative overflow-hidden hover:-translate-y-1 transition-all duration-500 hover:border-[rgba(255,255,255,0.15)]"
+              className={cn(
+                "group bg-[#080808] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 lg:p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)] flex flex-col",
+                cat.colSpan
+              )}
             >
-              <div className="absolute inset-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none">
+              <div className={cn("absolute inset-0 pointer-events-none transition-opacity duration-700", cat.isFeatured ? "opacity-60 group-hover:opacity-100" : "opacity-30 group-hover:opacity-60")}>
                 <SpectrumGlow
                   variant="card"
                   className={cn("w-[400px] h-[400px]", cat.glowPos)}
                 />
               </div>
 
-              <div className="relative z-10 flex flex-col h-full">
-                <h3 className="text-[13px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] uppercase mb-8">
-                  {cat.category}
+              <div className="relative z-10 mb-8 lg:mb-12">
+                <span className="text-[12px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] block mb-3">
+                  {cat.num}
+                </span>
+                <h3 className="text-[15px] font-medium tracking-[0.06em] text-[var(--color-brand-text)] uppercase">
+                  {cat.title}
                 </h3>
-                <div className="flex flex-col gap-5 mt-auto">
-                  {cat.technologies.map((tech) => (
-                    <div key={tech} className="flex items-center gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-text-very-muted)] group-hover:bg-[var(--color-brand-accent)] transition-colors duration-500 shadow-[0_0_8px_rgba(255,75,62,0)] group-hover:shadow-[0_0_8px_rgba(255,75,62,0.8)]" />
-                      <span className="text-[20px] lg:text-[24px] font-medium text-[var(--color-brand-text)]">
-                        {tech}
+                {cat.desc && (
+                  <p className="mt-4 text-[15px] text-[var(--color-brand-text-secondary)] leading-[1.6] max-w-[400px]">
+                    {cat.desc}
+                  </p>
+                )}
+              </div>
+
+              <div className={cn("relative z-10 grid gap-5 lg:gap-6 mt-auto", cat.isFeatured ? "sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2")}>
+                {cat.technologies.map((tech) => (
+                  <div key={tech.name} className="group/item flex items-start gap-4">
+                    <div className="w-9 h-9 rounded bg-[#101010] border border-[var(--color-brand-border)] flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:border-[var(--color-brand-border-hover)]">
+                      <span className="text-[11px] font-mono font-medium text-[var(--color-brand-text-secondary)] group-hover/item:text-[var(--color-brand-text)] transition-colors">
+                        {tech.monogram}
                       </span>
                     </div>
-                  ))}
-                </div>
+                    
+                    <div className="flex flex-col mt-0.5">
+                      <div className="flex items-center gap-2 transform transition-transform duration-300 group-hover/item:translate-x-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 shadow-[0_0_8px_rgba(255,75,62,0.6)]" />
+                        <span className="text-[15px] font-medium text-[var(--color-brand-text)] leading-none">{tech.name}</span>
+                      </div>
+                      {tech.desc && (
+                        <span className="text-[13px] text-[var(--color-brand-text-muted)] mt-1.5 block leading-none">
+                          {tech.desc}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}

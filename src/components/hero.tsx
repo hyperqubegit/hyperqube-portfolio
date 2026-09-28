@@ -16,19 +16,21 @@ export function Hero() {
   // Parallax effects
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
-  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+  // const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]); // Optional if we want to fade it
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[88vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-hidden"
+      className="relative min-h-[88vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-visible"
     >
       {/* Spectrum Atmospheric Glow */}
-      <SpectrumGlow 
-        className="top-[40%] left-[20%] w-[1200px] h-[900px] -translate-x-1/2 -translate-y-1/2"
-        opacity={0.8}
-      />
+      <motion.div 
+        style={{ y: glowY }} 
+        className="absolute bottom-[-15%] left-1/2 -translate-x-1/2 w-[1100px] h-[550px] pointer-events-none z-0"
+      >
+        <SpectrumGlow variant="hero" />
+      </motion.div>
 
       <div className="w-full max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-center">
         {/* ── Left: Copy ── */}
@@ -95,8 +97,10 @@ export function Hero() {
           style={{ y: imgY }}
           className="hidden lg:block relative"
         >
-          {/* Subtle blue atmospheric glow behind it */}
-          <div className="absolute inset-0 hidden opacity-80 blur-[90px] translate-y-4" />
+          {/* Subtle spectrum glow behind it */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none opacity-40">
+            <SpectrumGlow variant="card" />
+          </div>
           
           <div className="relative rounded-xl overflow-hidden aspect-[4/5] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl">
             <img
