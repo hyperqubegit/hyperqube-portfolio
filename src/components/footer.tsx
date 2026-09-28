@@ -1,28 +1,30 @@
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-slate-200 py-14">
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12">
+    <footer className="bg-[#000000] border-t border-[var(--color-brand-border)] py-14 relative overflow-hidden">
+      <div className="absolute inset-0 glow-white opacity-20 blur-[120px] pointer-events-none" />
+      
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-7 h-7 bg-[#0B132B] rounded-[4px] flex items-center justify-center shrink-0">
-                <span className="text-white text-[9px] font-bold tracking-tight leading-none">
+              <div className="w-7 h-7 bg-white rounded-[4px] flex items-center justify-center shrink-0">
+                <span className="text-black text-[9px] font-bold tracking-tight leading-none">
                   HQ
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[14px] font-bold tracking-[-0.01em] text-[#0B132B] leading-none">
+                <span className="text-[14px] font-bold tracking-[-0.01em] text-white leading-none">
                   HyperQube
                 </span>
-                <span className="text-[7px] font-semibold tracking-[0.18em] text-slate-400 uppercase leading-none mt-[2px]">
+                <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-muted)] uppercase leading-none mt-[2px]">
                   Software &bull; Data &bull; Intelligence
                 </span>
               </div>
             </div>
             <a
               href="mailto:hyperqube.ff@gmail.com"
-              className="text-[13px] text-slate-500 hover:text-[#0066FF] transition-colors"
+              className="text-[13px] text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-blue)] transition-colors"
             >
               hyperqube.ff@gmail.com
             </a>
@@ -39,7 +41,7 @@ export function Footer() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-semibold tracking-[0.04em] uppercase text-slate-500 hover:text-[#0066FF] transition-colors"
+                className="text-[13px] font-semibold tracking-[0.04em] uppercase text-[var(--color-brand-text-muted)] hover:text-[var(--color-brand-blue)] transition-colors"
               >
                 {item.label}
               </a>
@@ -47,8 +49,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="pt-6 border-t border-slate-100">
-          <p className="text-[12px] text-slate-400">
+        <div className="pt-6 border-t border-[var(--color-brand-border)]">
+          <p className="text-[12px] text-[var(--color-brand-text-muted)]">
             &copy; {new Date().getFullYear()} HyperQube. All rights reserved.
           </p>
         </div>

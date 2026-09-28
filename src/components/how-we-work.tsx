@@ -9,6 +9,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { fadeUp, mediaReveal } from "@/lib/motion";
 
 const STAGES = [
   { num: "01", title: "DISCOVER", desc: "Understand the problem, technical constraints, and business goals." },
@@ -40,44 +41,46 @@ export function HowWeWork() {
   });
 
   return (
-    <section id="process" className="py-20 lg:py-28 bg-[#FAFBFC] border-t border-slate-200/60">
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12">
+    <section id="process" className="py-20 lg:py-28 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* ── Top: heading + video ── */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            variants={fadeUp}
           >
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[#0066FF]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[#0066FF] uppercase">
+              <span className="h-[2px] w-6 bg-[var(--color-brand-blue)]" />
+              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-blue)] uppercase">
                 How we work
               </span>
             </div>
-            <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[#0B132B] leading-[1.12] mb-5">
+            <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.12] mb-5">
               Great products are built through clear thinking.
             </h2>
-            <p className="text-[17px] text-slate-500 leading-[1.65] max-w-[460px]">
+            <p className="text-[17px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[460px]">
               Close collaboration and good engineering turn ideas into software
               that actually works.
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="relative rounded-xl overflow-hidden aspect-video border border-slate-200/60 shadow-lg shadow-slate-200/40"
+            variants={mediaReveal}
+            className="relative rounded-xl overflow-hidden aspect-video border border-[var(--color-brand-border)] bg-[var(--color-brand-card)] shadow-2xl"
           >
+            {/* Atmospheric glow behind video */}
+            <div className="absolute inset-0 glow-white opacity-40 blur-[80px]" />
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover opacity-90"
             >
               <source src="/meeting.mp4" type="video/mp4" />
             </video>
@@ -87,10 +90,10 @@ export function HowWeWork() {
         {/* ── Desktop horizontal timeline ── */}
         <div ref={timelineRef} className="hidden lg:block relative pt-4 pb-4">
           {/* Base line */}
-          <div className="absolute top-[46px] left-0 right-0 h-[2px] bg-slate-200/70" />
+          <div className="absolute top-[46px] left-0 right-0 h-[2px] bg-[var(--color-brand-border)]" />
           {/* Active line */}
           <motion.div
-            className="absolute top-[46px] left-0 h-[2px] bg-[#0066FF] origin-left"
+            className="absolute top-[46px] left-0 h-[2px] bg-[var(--color-brand-blue)] origin-left shadow-[0_0_12px_rgba(0,102,255,0.8)]"
             style={{
               width: useTransform(smoothProg, [0, 1], ["0%", "100%"]),
             }}
@@ -104,21 +107,21 @@ export function HowWeWork() {
                 <div key={s.num} className="flex flex-col">
                   <div
                     className={cn(
-                      "w-5 h-5 rounded-full border-[3px] bg-[#FAFBFC] mb-8 transition-all duration-500",
-                      isActive ? "border-[#0066FF]" : "border-slate-300",
-                      isCurrent ? "scale-125 shadow-md shadow-blue-500/20" : ""
+                      "w-5 h-5 rounded-full border-[3px] bg-[var(--color-brand-bg)] mb-8 transition-all duration-500",
+                      isActive ? "border-[var(--color-brand-blue)]" : "border-[var(--color-brand-text-muted)]",
+                      isCurrent ? "scale-125 shadow-[0_0_12px_rgba(0,102,255,0.4)]" : ""
                     )}
                   />
                   <span
                     className={cn(
                       "text-[11px] font-bold tracking-[0.22em] uppercase mb-2 transition-colors duration-300",
-                      isCurrent ? "text-[#0B132B]" : "text-slate-400"
+                      isCurrent ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-muted)]"
                     )}
                   >
                     <span
                       className={cn(
                         "mr-1.5 transition-colors duration-300",
-                        isActive ? "text-[#0066FF]" : "text-slate-300"
+                        isActive ? "text-[var(--color-brand-blue)]" : "text-[var(--color-brand-text-muted)]"
                       )}
                     >
                       {s.num}
@@ -128,7 +131,7 @@ export function HowWeWork() {
                   <p
                     className={cn(
                       "text-[14px] leading-[1.55] transition-colors duration-300",
-                      isCurrent ? "text-slate-600" : "text-slate-400"
+                      isCurrent ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-muted)]"
                     )}
                   >
                     {s.desc}
@@ -141,16 +144,16 @@ export function HowWeWork() {
 
         {/* ── Mobile vertical timeline ── */}
         <div className="lg:hidden relative pl-6">
-          <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-slate-200/70" />
+          <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-[var(--color-brand-border)]" />
           <div className="flex flex-col gap-10">
             {STAGES.map((s) => (
               <div key={s.num} className="relative pl-8">
-                <div className="absolute left-[-4px] top-1.5 w-4 h-4 rounded-full border-[3px] border-[#0066FF] bg-[#FAFBFC]" />
-                <span className="text-[11px] font-bold tracking-[0.22em] uppercase mb-1.5 block text-[#0B132B]">
-                  <span className="text-[#0066FF] mr-1.5">{s.num}</span>
+                <div className="absolute left-[-4px] top-1.5 w-4 h-4 rounded-full border-[3px] border-[var(--color-brand-blue)] bg-[var(--color-brand-bg)]" />
+                <span className="text-[11px] font-bold tracking-[0.22em] uppercase mb-1.5 block text-[var(--color-brand-text)]">
+                  <span className="text-[var(--color-brand-blue)] mr-1.5">{s.num}</span>
                   {s.title}
                 </span>
-                <p className="text-[14px] text-slate-500 leading-[1.55]">
+                <p className="text-[14px] text-[var(--color-brand-text-secondary)] leading-[1.55]">
                   {s.desc}
                 </p>
               </div>

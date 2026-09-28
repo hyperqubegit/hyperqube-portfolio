@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { mediaReveal } from "@/lib/motion";
 
 export function HeroMedia() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,39 +13,40 @@ export function HeroMedia() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
 
   return (
-    <section ref={ref} className="pb-6 lg:pb-10 bg-[#FAFBFC]">
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12">
+    <section ref={ref} className="pb-10 lg:pb-16 bg-[var(--color-brand-bg)] relative">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* Mobile: show the office photo that is hidden in hero right column */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          variants={mediaReveal}
           className="lg:hidden mb-10"
         >
-          <div className="relative rounded-xl overflow-hidden aspect-[16/10] border border-slate-200/60 shadow-sm">
+          <div className="relative rounded-xl overflow-hidden aspect-[16/10] border border-[var(--color-brand-border)] shadow-2xl bg-[var(--color-brand-card)]">
             <img
               src="/office.avif"
               alt="HyperQube team at work"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover opacity-90"
             />
-            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#0066FF] via-[#0066FF]/60 to-transparent" />
           </div>
         </motion.div>
 
         {/* Full-width editorial photo — visible on desktop */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-slate-200/60"
+          variants={mediaReveal}
+          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[var(--color-brand-border)] bg-[var(--color-brand-card)] shadow-2xl"
         >
+          {/* Subtle atmospheric glow behind image */}
+          <div className="absolute inset-0 glow-blue opacity-30 blur-[80px] pointer-events-none" />
           <motion.img
             style={{ y }}
             src="/office.avif"
             alt="HyperQube — engineering studio"
-            className="absolute top-[-8%] left-0 w-full h-[116%] object-cover"
+            className="absolute top-[-8%] left-0 w-full h-[116%] object-cover opacity-90"
           />
         </motion.div>
       </div>

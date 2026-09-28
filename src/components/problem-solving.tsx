@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import {
-  motion,
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
@@ -47,19 +46,19 @@ export function ProblemSolving() {
   return (
     <section
       ref={containerRef}
-      className="py-20 lg:py-28 bg-[#F5F7FA] border-t border-slate-200/60"
+      className="py-20 lg:py-28 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-20">
         {/* ── Left: sticky ── */}
         <div className="lg:h-[700px]">
           <div className="lg:sticky lg:top-36">
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[#0066FF]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[#0066FF] uppercase">
+              <span className="h-[2px] w-6 bg-[var(--color-brand-blue)]" />
+              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-blue)] uppercase">
                 What we solve
               </span>
             </div>
-            <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[#0B132B] leading-[1.12] mb-6">
+            <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.12] mb-6">
               We build solutions
               <br className="hidden lg:block" /> for real problems.
             </h2>
@@ -78,7 +77,7 @@ export function ProblemSolving() {
                   <span
                     className={cn(
                       "text-[12px] font-bold tracking-[0.1em] transition-colors duration-300",
-                      active === i ? "text-[#0066FF]" : "text-slate-300"
+                      active === i ? "text-[var(--color-brand-blue)]" : "text-[var(--color-brand-text-muted)]"
                     )}
                   >
                     {item.num}
@@ -87,8 +86,8 @@ export function ProblemSolving() {
                     className={cn(
                       "h-[2px] transition-all duration-500",
                       active === i
-                        ? "w-16 bg-[#0066FF]"
-                        : "w-8 bg-slate-200"
+                        ? "w-16 bg-[var(--color-brand-blue)]"
+                        : "w-8 bg-[var(--color-brand-border)]"
                     )}
                   />
                 </button>
@@ -104,16 +103,16 @@ export function ProblemSolving() {
               key={item.num}
               id={`solve-${item.num}`}
               className={cn(
-                "p-8 lg:p-10 bg-white border rounded-lg transition-all duration-500",
+                "p-8 lg:p-10 border transition-all duration-500",
                 active === i
-                  ? "border-[#0066FF]/25 shadow-[0_8px_40px_-12px_rgba(0,102,255,0.08)] opacity-100"
-                  : "border-slate-100 opacity-40"
+                  ? "bg-[var(--color-brand-panel)] border-[var(--color-brand-border-blue)] shadow-[0_8px_40px_-12px_rgba(0,102,255,0.08)] opacity-100"
+                  : "bg-transparent border-[var(--color-brand-border)] opacity-[0.35]"
               )}
             >
               <span
                 className={cn(
                   "text-[13px] font-bold tracking-[0.1em] mb-5 block transition-colors duration-300",
-                  active === i ? "text-[#0066FF]" : "text-slate-300"
+                  active === i ? "text-[var(--color-brand-blue)]" : "text-[var(--color-brand-text-muted)]"
                 )}
               >
                 {item.num}
@@ -121,12 +120,12 @@ export function ProblemSolving() {
               <h3
                 className={cn(
                   "text-[22px] lg:text-[26px] font-bold leading-[1.2] mb-4 transition-colors duration-300",
-                  active === i ? "text-[#0B132B]" : "text-slate-400"
+                  active === i ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >
                 {item.title}
               </h3>
-              <p className="text-[16px] text-slate-500 leading-[1.65]">
+              <p className="text-[16px] text-[var(--color-brand-text-secondary)] leading-[1.65]">
                 {item.desc}
               </p>
             </div>

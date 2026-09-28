@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
   { label: "Services", href: "#services" },
@@ -33,26 +34,29 @@ export function Navbar() {
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)] h-14"
-          : "bg-[#FAFBFC]/80 backdrop-blur-sm border-b border-transparent h-16"
+          ? "bg-[rgba(5,5,5,0.9)] backdrop-blur-xl border-b border-[var(--color-brand-border)] h-14"
+          : "bg-transparent border-b border-transparent h-16"
       }`}
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5" onClick={closeMobile}>
-          <div className="w-7 h-7 bg-[#0B132B] rounded-[4px] flex items-center justify-center shrink-0">
-            <span className="text-white text-[9px] font-bold tracking-tight leading-none">
+          <div className="w-7 h-7 bg-[var(--color-brand-text)] rounded-[4px] flex items-center justify-center shrink-0">
+            <span className="text-[var(--color-brand-bg)] text-[9px] font-bold tracking-tight leading-none">
               HQ
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] font-bold tracking-[-0.01em] text-[#0B132B] leading-none">
+            <span className="text-[14px] font-bold tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
               HyperQube
             </span>
-            <span className="text-[7px] font-semibold tracking-[0.18em] text-slate-400 uppercase leading-none mt-[2px]">
+            <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-muted)] uppercase leading-none mt-[2px]">
               Software &bull; Data &bull; Intelligence
             </span>
           </div>
@@ -67,7 +71,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="text-[13px] font-medium text-slate-500 hover:text-[#0066FF] transition-colors"
+              className="text-[13px] font-medium text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] transition-colors"
             >
               {item.label}
             </a>
@@ -78,7 +82,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-[#0B132B] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[#0066FF] transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 bg-[var(--color-brand-blue)] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[var(--color-brand-blue-light)] transition-colors rounded-sm"
           >
             Start a Project
             <svg
@@ -99,7 +103,7 @@ export function Navbar() {
             </svg>
           </a>
           <button
-            className="md:hidden p-2 -mr-2 text-slate-500"
+            className="md:hidden p-2 -mr-2 text-[var(--color-brand-text-secondary)]"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -116,7 +120,7 @@ export function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <nav
-          className="md:hidden border-t border-slate-100 bg-white"
+          className="md:hidden border-t border-[var(--color-brand-border)] bg-[var(--color-brand-panel)] shadow-xl"
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col px-5 py-3 gap-0.5">
@@ -125,7 +129,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={closeMobile}
-                className="py-3 text-[14px] font-medium text-slate-600 hover:text-[#0066FF] border-b border-slate-50 last:border-0 transition-colors"
+                className="py-3 text-[14px] font-medium text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] border-b border-[var(--color-brand-border)] last:border-0 transition-colors"
               >
                 {item.label}
               </a>
@@ -133,13 +137,13 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={closeMobile}
-              className="mt-3 mb-1 flex items-center justify-center bg-[#0B132B] py-2.5 text-[14px] font-medium text-white"
+              className="mt-3 mb-1 flex items-center justify-center bg-[var(--color-brand-blue)] rounded-sm py-2.5 text-[14px] font-medium text-white"
             >
               Start a Project
             </a>
           </div>
         </nav>
       )}
-    </header>
+    </motion.header>
   );
 }
