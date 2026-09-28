@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   description: "HyperQube builds modern software, intelligent systems, data solutions and digital products for businesses, startups and growing teams.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
