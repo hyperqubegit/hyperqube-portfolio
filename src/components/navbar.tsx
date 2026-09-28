@@ -36,23 +36,23 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/92 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
-          : "bg-white/60 backdrop-blur-sm border-b border-transparent"
+          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)] h-14"
+          : "bg-[#FAFBFC]/80 backdrop-blur-sm border-b border-transparent h-16"
       }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 h-[4rem] flex items-center justify-between">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5" onClick={closeMobile}>
-          <div className="w-[30px] h-[30px] bg-[#0B132B] rounded-[5px] flex items-center justify-center shrink-0">
-            <span className="text-white text-[10px] font-bold tracking-tight leading-none">
+          <div className="w-7 h-7 bg-[#0B132B] rounded-[4px] flex items-center justify-center shrink-0">
+            <span className="text-white text-[9px] font-bold tracking-tight leading-none">
               HQ
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[15px] font-bold tracking-[-0.01em] text-[#0B132B] leading-none">
+            <span className="text-[14px] font-bold tracking-[-0.01em] text-[#0B132B] leading-none">
               HyperQube
             </span>
-            <span className="text-[7.5px] font-semibold tracking-[0.18em] text-slate-400 uppercase leading-none mt-[3px]">
+            <span className="text-[7px] font-semibold tracking-[0.18em] text-slate-400 uppercase leading-none mt-[2px]">
               Software &bull; Data &bull; Intelligence
             </span>
           </div>
@@ -78,7 +78,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 rounded-lg bg-[#0B132B] px-4 py-[7px] text-[13px] font-medium text-white hover:bg-[#0066FF] transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 bg-[#0B132B] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[#0066FF] transition-colors"
           >
             Start a Project
             <svg
@@ -119,7 +119,7 @@ export function Navbar() {
           className="md:hidden border-t border-slate-100 bg-white"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col px-6 py-3 gap-0.5">
+          <div className="flex flex-col px-5 py-3 gap-0.5">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -133,7 +133,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={closeMobile}
-              className="mt-3 mb-1 flex items-center justify-center rounded-lg bg-[#0B132B] py-2.5 text-[14px] font-medium text-white"
+              className="mt-3 mb-1 flex items-center justify-center bg-[#0B132B] py-2.5 text-[14px] font-medium text-white"
             >
               Start a Project
             </a>

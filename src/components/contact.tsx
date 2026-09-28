@@ -5,80 +5,70 @@ import { ArrowRight, Mail } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
 export function Contact() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="contact" className="py-[140px] lg:py-[180px] bg-[#EBF3FF] border-t border-blue-100 overflow-hidden relative">
-      {/* Subtle animated background grid */}
-      <div className="absolute inset-0 opacity-[0.05]"
+    <section
+      id="contact"
+      className="py-24 lg:py-32 bg-[#EDF2FF] border-t border-blue-200/40 relative overflow-hidden"
+    >
+      {/* Subtle grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
-          backgroundImage: 'linear-gradient(to right, #0066FF 1px, transparent 1px), linear-gradient(to bottom, #0066FF 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
+          backgroundImage:
+            "linear-gradient(to right, #0066FF 1px, transparent 1px), linear-gradient(to bottom, #0066FF 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
-      <motion.div 
-        animate={{ 
-          x: [0, 40, 0],
-          y: [0, 40, 0]
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage: 'linear-gradient(to right, #0066FF 1px, transparent 1px), linear-gradient(to bottom, #0066FF 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}
-      />
-      
-      <div className="absolute top-0 left-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-[#0066FF]/20 to-transparent" />
-      <div className="absolute top-0 right-1/4 w-[1px] h-full bg-gradient-to-b from-transparent via-[#0066FF]/20 to-transparent" />
 
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16 relative z-10" ref={containerRef}>
-        <div className="flex flex-col items-center text-center max-w-[800px] mx-auto">
+      <div
+        className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
+        ref={ref}
+      >
+        <div className="flex flex-col items-center text-center max-w-[720px] mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mb-12"
           >
-            <span className="text-[12px] font-bold tracking-[0.2em] text-[#0066FF] uppercase block mb-8">
-              Let&apos;s build together.
+            <span className="text-[12px] font-bold tracking-[0.22em] text-[#0066FF] uppercase block mb-6">
+              Let&apos;s build together
             </span>
-            
-            <h2 className="text-[clamp(3rem,6vw,5rem)] font-bold tracking-[-0.03em] text-[#0B132B] leading-[1.05] mb-8">
-              Need something built?<br />
+
+            <h2 className="text-[clamp(2.75rem,5.5vw,4.5rem)] font-bold tracking-[-0.03em] text-[#0B132B] leading-[1.08] mb-6">
+              Need something built?
+              <br />
               Let&apos;s talk.
             </h2>
 
-            <p className="text-[18px] lg:text-[22px] text-slate-600 leading-[1.6]">
-              Have an idea, a problem to solve, or a product you want to bring to life?
+            <p className="text-[17px] lg:text-[19px] text-slate-600 leading-[1.65] mb-10">
+              Have an idea, a problem to solve, or a product you want to bring
+              to life?
             </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="mt-6 flex flex-col sm:flex-row items-center gap-6"
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-5"
           >
-            <a 
+            <a
               href="mailto:hyperqube.ff@gmail.com"
-              className="group flex items-center justify-center gap-3 bg-[#0B132B] px-10 py-5 rounded-full text-[15px] font-bold tracking-[0.05em] text-white hover:bg-[#0066FF] hover:shadow-[0_12px_30px_-10px_rgba(0,102,255,0.4)] transition-all duration-300 w-full sm:w-auto"
+              className="group inline-flex items-center gap-2.5 bg-[#0B132B] px-8 py-4 text-[14px] font-semibold text-white hover:bg-[#0066FF] transition-all duration-300 rounded-sm w-full sm:w-auto justify-center"
             >
               Start a Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
             </a>
 
-            <div className="hidden sm:block text-slate-300 font-light">or</div>
-
-            <a 
+            <a
               href="mailto:hyperqube.ff@gmail.com"
-              className="group flex items-center gap-3 bg-white px-8 py-5 rounded-full text-[15px] font-medium text-[#0B132B] border border-blue-200/60 shadow-sm hover:border-[#0066FF]/40 transition-all duration-300 w-full sm:w-auto"
+              className="group inline-flex items-center gap-3 bg-white px-7 py-4 text-[14px] font-semibold text-[#0B132B] border border-slate-200 hover:border-[#0066FF]/40 rounded-sm transition-all duration-300 w-full sm:w-auto justify-center"
             >
-              <Mail className="w-5 h-5 text-[#0066FF]" />
-              <span className="group-hover:text-[#0066FF] transition-colors">
-                hyperqube.ff@gmail.com
-              </span>
+              <Mail className="w-4 h-4 text-[#0066FF]" />
+              hyperqube.ff@gmail.com
             </a>
           </motion.div>
         </div>
