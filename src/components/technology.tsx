@@ -6,12 +6,29 @@ import { fadeUp } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 import { cn } from "@/lib/utils";
 
-const CATEGORIES = [
+type TechnologyItem = {
+  name: string;
+  monogram: string;
+  desc?: string;
+};
+
+type TechCategory = {
+  num: string;
+  id: string;
+  title: string;
+  colSpan: string;
+  desc?: string;
+  technologies: TechnologyItem[];
+  glowPos: string;
+  isFeatured?: boolean;
+};
+
+const CATEGORIES: TechCategory[] = [
   {
     num: "01",
     id: "frontend",
     title: "PRODUCT & FRONTEND",
-    colSpan: "md:col-span-1",
+    colSpan: "col-span-12 md:col-span-6",
     technologies: [
       { name: "Next.js", monogram: "N", desc: "Application framework" },
       { name: "React", monogram: "R" },
@@ -24,7 +41,7 @@ const CATEGORIES = [
     num: "02",
     id: "backend",
     title: "BACKEND & APIs",
-    colSpan: "md:col-span-1",
+    colSpan: "col-span-12 md:col-span-6",
     technologies: [
       { name: "Node.js", monogram: "N" },
       { name: "Python", monogram: "PY", desc: "Logic & processing" },
@@ -36,7 +53,7 @@ const CATEGORIES = [
     num: "03",
     id: "ai",
     title: "AI & INTELLIGENCE",
-    colSpan: "md:col-span-2",
+    colSpan: "col-span-12 md:col-span-12 lg:col-span-8",
     desc: "Turning data into useful systems, automation, and intelligent product experiences.",
     technologies: [
       { name: "Machine Learning", monogram: "ML" },
@@ -51,7 +68,7 @@ const CATEGORIES = [
     num: "04",
     id: "data",
     title: "DATA & DATABASES",
-    colSpan: "md:col-span-1",
+    colSpan: "col-span-12 md:col-span-6 lg:col-span-4",
     technologies: [
       { name: "PostgreSQL", monogram: "PG", desc: "Relational data" },
       { name: "Supabase", monogram: "SB" },
@@ -63,7 +80,7 @@ const CATEGORIES = [
     num: "05",
     id: "design",
     title: "DESIGN & MOTION",
-    colSpan: "md:col-span-1",
+    colSpan: "col-span-12 md:col-span-6",
     technologies: [
       { name: "Tailwind CSS", monogram: "TW" },
       { name: "Framer Motion", monogram: "FM" },
@@ -74,7 +91,7 @@ const CATEGORIES = [
     num: "06",
     id: "cloud",
     title: "CLOUD & DELIVERY",
-    colSpan: "md:col-span-2 lg:col-span-1",
+    colSpan: "col-span-12 md:col-span-6",
     technologies: [
       { name: "Vercel", monogram: "V", desc: "Edge deployment" },
       { name: "GitHub", monogram: "GH" },
@@ -113,7 +130,7 @@ export function Technology() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-12 gap-6 w-full mx-auto">
           {CATEGORIES.map((cat, i) => (
             <motion.div
               key={cat.id}
@@ -121,47 +138,49 @@ export function Technology() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
-                "group bg-[#080808] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 lg:p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)] flex flex-col",
+                "group bg-[#080808] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 lg:p-[48px] relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)] flex flex-col",
                 cat.colSpan
               )}
             >
               <div className={cn("absolute inset-0 pointer-events-none transition-opacity duration-700", cat.isFeatured ? "opacity-60 group-hover:opacity-100" : "opacity-30 group-hover:opacity-60")}>
                 <SpectrumGlow
                   variant="card"
-                  className={cn("w-[400px] h-[400px]", cat.glowPos)}
+                  className={cn("w-[400px] h-[400px] absolute", cat.glowPos)}
                 />
               </div>
 
-              <div className="relative z-10 mb-8 lg:mb-12">
-                <span className="text-[12px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] block mb-3">
+              {/* Header section (fixed height impact via flex-col) */}
+              <div className="relative z-10 flex flex-col">
+                <span className="text-[12px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] block">
                   {cat.num}
                 </span>
-                <h3 className="text-[15px] font-medium tracking-[0.06em] text-[var(--color-brand-text)] uppercase">
+                <h3 className="text-[15px] font-medium tracking-[0.06em] text-[var(--color-brand-text)] uppercase mt-6">
                   {cat.title}
                 </h3>
                 {cat.desc && (
-                  <p className="mt-4 text-[15px] text-[var(--color-brand-text-secondary)] leading-[1.6] max-w-[400px]">
+                  <p className="mt-5 text-[15px] text-[var(--color-brand-text-secondary)] leading-[1.6] max-w-[440px]">
                     {cat.desc}
                   </p>
                 )}
               </div>
 
-              <div className={cn("relative z-10 grid gap-5 lg:gap-6 mt-auto", cat.isFeatured ? "sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2")}>
+              {/* Technology grid (pushes to bottom) */}
+              <div className={cn("relative z-10 grid gap-x-8 gap-y-7 mt-auto pt-11", "grid-cols-1 sm:grid-cols-2")}>
                 {cat.technologies.map((tech) => (
-                  <div key={tech.name} className="group/item flex items-start gap-4">
-                    <div className="w-9 h-9 rounded bg-[#101010] border border-[var(--color-brand-border)] flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:border-[var(--color-brand-border-hover)]">
-                      <span className="text-[11px] font-mono font-medium text-[var(--color-brand-text-secondary)] group-hover/item:text-[var(--color-brand-text)] transition-colors">
+                  <div key={tech.name} className="group/item flex items-start gap-4 min-h-[72px]">
+                    <div className="w-12 h-12 rounded bg-[#101010] border border-[var(--color-brand-border)] flex items-center justify-center shrink-0 transition-colors duration-300 group-hover/item:border-[var(--color-brand-border-hover)]">
+                      <span className="text-[12px] font-mono font-medium text-[var(--color-brand-text-secondary)] group-hover/item:text-[var(--color-brand-text)] transition-colors">
                         {tech.monogram}
                       </span>
                     </div>
                     
-                    <div className="flex flex-col mt-0.5">
+                    <div className="flex flex-col mt-1">
                       <div className="flex items-center gap-2 transform transition-transform duration-300 group-hover/item:translate-x-1">
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 shadow-[0_0_8px_rgba(255,75,62,0.6)]" />
                         <span className="text-[15px] font-medium text-[var(--color-brand-text)] leading-none">{tech.name}</span>
                       </div>
                       {tech.desc && (
-                        <span className="text-[13px] text-[var(--color-brand-text-muted)] mt-1.5 block leading-none">
+                        <span className="text-[13px] text-[var(--color-brand-text-muted)] mt-2 block leading-none">
                           {tech.desc}
                         </span>
                       )}
