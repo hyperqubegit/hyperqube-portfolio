@@ -2,7 +2,7 @@ import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Footer() {
   return (
-    <footer className="bg-[#030303] border-t border-[var(--color-brand-border)] py-14 relative overflow-hidden">
+    <footer className="bg-[#000000] border-t border-[var(--color-brand-border)] py-14 relative overflow-hidden">
       {/* Background glow spilling from contact */}
       <SpectrumGlow 
         className="bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[400px]"
@@ -15,15 +15,15 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <div className="w-7 h-7 bg-white rounded-[4px] flex items-center justify-center shrink-0">
-                <span className="text-black text-[9px] font-medium tracking-tight leading-none">
+                <span className="text-black text-[9px] font-normal tracking-tight leading-none">
                   HQ
                 </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[14px] font-medium tracking-[-0.01em] text-white leading-none">
+                <span className="text-[14px] font-normal tracking-[-0.01em] text-white leading-none">
                   HyperQube
                 </span>
-                <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
+                <span className="text-[7px] font-normal tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
                   Software &bull; Data &bull; Intelligence
                 </span>
               </div>
@@ -47,7 +47,7 @@ export function Footer() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-semibold tracking-[0.04em] uppercase text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-accent)] transition-colors"
+                className="text-[13px] font-normal tracking-[0.04em] uppercase text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-accent)] transition-colors"
               >
                 {item.label}
               </a>

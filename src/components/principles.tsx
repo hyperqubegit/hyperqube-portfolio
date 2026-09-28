@@ -1,116 +1,115 @@
 "use client";
 
-import { useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  useInView,
-} from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Check, X } from "lucide-react";
 import { fadeUp } from "@/lib/motion";
+import { SpectrumGlow } from "@/components/spectrum-glow";
+import { cn } from "@/lib/utils";
 
-const PRINCIPLES = [
-  { num: "01", title: "REAL PROBLEMS", desc: "We start with the problem, not the technology." },
-  { num: "02", title: "TECHNOLOGY WITH PURPOSE", desc: "Every technical decision has a reason." },
-  { num: "03", title: "ENGINEERING THAT SCALES", desc: "Build foundations that can grow with the product." },
-  { num: "04", title: "DESIGNED FOR PEOPLE", desc: "Powerful technology without unnecessary complexity." },
+const BAD_POINTS = [
+  "Tools chosen because they're trendy",
+  "Disconnected systems and data silos",
+  "Manual, repetitive workflows",
+  "Hard-to-maintain foundations",
+  "Off-the-shelf software compromises",
+];
+
+const GOOD_POINTS = [
+  "Technology chosen for the problem",
+  "Systems designed around your workflow",
+  "Automation where it creates value",
+  "Foundations built to evolve and scale",
+  "Custom solutions that fit perfectly",
 ];
 
 export function Principles() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const [active, setActive] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 0.4", "end 0.6"],
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    setActive(
-      Math.min(Math.max(Math.floor(v * PRINCIPLES.length), 0), PRINCIPLES.length - 1)
-    );
-  });
 
   return (
     <section
       ref={containerRef}
-      className="py-20 lg:py-32 bg-[#030303] relative border-t border-[var(--color-brand-border)] transition-colors duration-1000"
+      className="py-20 lg:py-32 bg-[var(--color-brand-bg)] relative border-t border-[var(--color-brand-border)] overflow-hidden"
     >
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-24 relative z-10">
-        {/* ── Left: Sticky Heading ── */}
-        <div className="lg:h-[800px]">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          variants={fadeUp}
+          className="mb-16 lg:mb-24 flex flex-col items-center text-center"
+        >
+          <div className="mb-8">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
+              Built Around Your Goals
+            </span>
+          </div>
+          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
+            Engineering with <br className="hidden sm:block" />
+            <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">Purpose.</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left Column - Muted */}
           <motion.div
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-            variants={fadeUp}
-            className="lg:sticky lg:top-40"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-[var(--color-brand-bg)] border border-[var(--color-brand-border)] rounded-2xl p-8 lg:p-14 opacity-[0.65] relative overflow-hidden"
           >
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
-                Core Principles
-              </span>
-            </div>
-            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.08] uppercase">
-              Built <br />
-              Around <br />
-              <em className="font-serif italic font-normal tracking-normal text-[var(--color-brand-text-secondary)]">Your Goals.</em>
-            </h2>
+            <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] uppercase mb-8 lg:mb-12">
+              Without Purposeful Engineering
+            </h3>
+            
+            <ul className="flex flex-col gap-6">
+              {BAD_POINTS.map((point, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="w-5 h-5 rounded-full bg-[#101010] flex items-center justify-center shrink-0 mt-0.5">
+                    <X className="w-3 h-3 text-[var(--color-brand-text-very-muted)]" />
+                  </span>
+                  <span className="text-[16px] text-[var(--color-brand-text-muted)] leading-[1.5]">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </motion.div>
-        </div>
 
-        {/* ── Right: Scroll Items ── */}
-        <div className="flex flex-col gap-12 lg:gap-16 pb-[30vh]">
-          {PRINCIPLES.map((p, i) => {
-            const isActive = active >= i; // Activate as we scroll past them
-            const isCurrent = active === i;
-            return (
-              <div
-                key={p.num}
-                className={cn(
-                  "relative pl-6 lg:pl-10 py-4 transition-all duration-700 ease-out",
-                  isActive ? "opacity-100 translate-y-0" : "opacity-30 translate-y-8"
-                )}
-              >
-                {/* Accent Line */}
-                <span
-                  className={cn(
-                    "absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-700 ease-out",
-                    isCurrent ? "bg-[var(--color-brand-accent)] scale-y-100" : "bg-[var(--color-brand-border)] scale-y-100"
-                  )}
-                />
+          {/* Right Column - Emphasized */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-[var(--color-brand-card)] border border-[rgba(255,255,255,0.12)] rounded-2xl p-8 lg:p-14 relative overflow-hidden shadow-2xl"
+          >
+            <div className="absolute inset-0 opacity-40 pointer-events-none">
+              <SpectrumGlow
+                variant="card"
+                className="top-[-10%] right-[-10%] w-[500px] h-[500px]"
+              />
+            </div>
 
-                <span
-                  className={cn(
-                    "text-[14px] font-medium tracking-[0.1em] mb-4 block transition-colors duration-700",
-                    isCurrent ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
-                  )}
-                >
-                  {p.num}
-                </span>
-
-                <h3
-                  className={cn(
-                    "text-[28px] lg:text-[36px] font-medium tracking-tight leading-[1.1] mb-5 uppercase transition-colors duration-700",
-                    isActive ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
-                  )}
-                >
-                  {p.title}
-                </h3>
-
-                <p
-                  className={cn(
-                    "text-[18px] lg:text-[20px] leading-[1.6] max-w-[480px] transition-colors duration-700",
-                    isActive ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-secondary)]"
-                  )}
-                >
-                  {p.desc}
-                </p>
-              </div>
-            );
-          })}
+            <div className="relative z-10">
+              <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text)] uppercase mb-8 lg:mb-12 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] shadow-[0_0_8px_rgba(255,75,62,0.6)]" />
+                With HyperQube
+              </h3>
+              
+              <ul className="flex flex-col gap-6">
+                {GOOD_POINTS.map((point, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <span className="w-5 h-5 rounded-full bg-[#151515] flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-[var(--color-brand-accent)]" />
+                    </span>
+                    <span className="text-[16px] text-[var(--color-brand-text)] leading-[1.5]">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

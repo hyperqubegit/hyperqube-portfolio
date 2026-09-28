@@ -47,28 +47,32 @@ export function HowWeWork() {
     <section id="process" className="py-20 lg:py-28 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative">
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* ── Top: heading + video ── */}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
+        <div className="flex flex-col items-center text-center max-w-[800px] mx-auto mb-16 lg:mb-24">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
             variants={fadeUp}
+            className="flex flex-col items-center"
           >
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
-                How we work
+            <div className="mb-8">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
+                Process
               </span>
             </div>
-            <h2 className="text-[clamp(48px,5vw,72px)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6 uppercase">
-              Great products are built <br/>
-              through clear thinking.
+            <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6">
+              How we get <br className="hidden sm:block" />
+              <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">you results.</em>
             </h2>
-            <p className="text-[17px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[460px]">
-              Close collaboration and good engineering turn ideas into software
+            <p className="text-[16px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[500px]">
+              Close collaboration and purposeful engineering turn ideas into software
               that actually works.
             </p>
           </motion.div>
+        </div>
+
+        {/* Media Block Below */}
+        <div className="mb-16 lg:mb-24">
 
           <motion.div
             initial="hidden"
@@ -120,7 +124,7 @@ export function HowWeWork() {
                   />
                   <span
                     className={cn(
-                      "text-[11px] font-medium tracking-[0.22em] uppercase mb-2 transition-colors duration-500",
+                      "text-[11px] font-normal tracking-[0.22em] uppercase mb-2 transition-colors duration-500",
                       isCurrent ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                     )}
                   >
@@ -155,7 +159,7 @@ export function HowWeWork() {
             {STAGES.map((s) => (
               <div key={s.num} className="relative pl-8">
                 <div className="absolute left-[-4px] top-1.5 w-4 h-4 rounded-full border-[3px] border-[var(--color-brand-accent)] bg-[var(--color-brand-bg)]" />
-                <span className="text-[11px] font-medium tracking-[0.22em] uppercase mb-1.5 block text-[var(--color-brand-text)]">
+                <span className="text-[11px] font-normal tracking-[0.22em] uppercase mb-1.5 block text-[var(--color-brand-text)]">
                   <span className="text-[var(--color-brand-accent)] mr-1.5">{s.num}</span>
                   {s.title}
                 </span>

@@ -48,15 +48,15 @@ export function Navbar() {
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5" onClick={closeMobile}>
           <div className="w-7 h-7 bg-[var(--color-brand-text)] rounded-[4px] flex items-center justify-center shrink-0">
-            <span className="text-[var(--color-brand-bg)] text-[9px] font-medium tracking-tight leading-none">
+            <span className="text-[var(--color-brand-bg)] text-[9px] font-normal tracking-tight leading-none">
               HQ
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] font-medium tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
+            <span className="text-[14px] font-normal tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
               HyperQube
             </span>
-            <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
+            <span className="text-[7px] font-normal tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
               Software &bull; Data &bull; Intelligence
             </span>
           </div>
@@ -71,7 +71,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="text-[13px] font-medium text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] transition-colors"
+              className="text-[13px] font-normal text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] transition-colors"
             >
               {item.label}
             </a>
@@ -82,7 +82,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-[var(--color-brand-accent)] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[var(--color-brand-accent-light)] transition-colors rounded-sm"
+            className="hidden md:inline-flex items-center gap-1.5 bg-[var(--color-brand-accent)] px-4 py-[7px] text-[13px] font-normal text-white hover:bg-[var(--color-brand-accent-light)] transition-colors rounded-sm"
           >
             Start a Project
             <svg
@@ -129,7 +129,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={closeMobile}
-                className="py-3 text-[14px] font-medium text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] border-b border-[var(--color-brand-border)] last:border-0 transition-colors"
+                className="py-3 text-[14px] font-normal text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-text)] border-b border-[var(--color-brand-border)] last:border-0 transition-colors"
               >
                 {item.label}
               </a>
@@ -137,7 +137,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={closeMobile}
-              className="mt-3 mb-1 flex items-center justify-center bg-[var(--color-brand-accent)] rounded-sm py-2.5 text-[14px] font-medium text-white"
+              className="mt-3 mb-1 flex items-center justify-center bg-[var(--color-brand-accent)] rounded-sm py-2.5 text-[14px] font-normal text-white"
             >
               Start a Project
             </a>

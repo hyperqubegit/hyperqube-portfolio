@@ -46,13 +46,12 @@ export function Hero() {
           className="relative z-10"
         >
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
-            <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+            <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Turn your ideas into reality
             </span>
           </motion.div>
 
-          <h1 className="text-[clamp(64px,7vw,118px)] font-medium tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8 overflow-hidden flex flex-col gap-1">
+          <h1 className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8 overflow-hidden flex flex-col gap-1">
             <motion.span variants={lineReveal} className="block">Have an Idea?</motion.span>
             <motion.span variants={lineReveal} className="block text-[var(--color-brand-text)]">
               <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
@@ -73,14 +72,14 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-medium text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
+              className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-normal text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
             >
               Start a Project
               <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#what-we-build"
-              className="group relative inline-flex items-center gap-2 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] px-6 py-3.5 text-[14px] font-medium text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-all rounded-sm"
+              className="group relative inline-flex items-center gap-2 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] px-6 py-3.5 text-[14px] font-normal text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-all rounded-sm"
             >
               Explore What We Build
               <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -115,7 +114,7 @@ export function Hero() {
             className="absolute -left-6 bottom-16 bg-[var(--color-brand-panel)] border border-[rgba(255,255,255,0.1)] px-5 py-3.5 shadow-2xl rounded-sm flex items-center gap-3"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-medium tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
+            <span className="text-[11px] font-normal tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
               Engineering Studio
             </span>
           </motion.div>

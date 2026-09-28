@@ -53,27 +53,29 @@ export function ProblemSolving() {
       ref={containerRef}
       className="py-20 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative"
     >
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-24 relative z-10">
-        {/* ── Left: sticky ── */}
-        <div className="lg:h-[700px]">
-          <motion.div 
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-            variants={fadeUp}
-            className="lg:sticky lg:top-40"
-          >
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
-                What we solve
-              </span>
-            </div>
-            <h2 className="text-[clamp(48px,5vw,72px)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
-              We build solutions
-              <br className="hidden lg:block" /> for real problems.
-            </h2>
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+        <motion.div 
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          variants={fadeUp}
+          className="mb-16 lg:mb-24 flex flex-col items-center text-center max-w-[800px] mx-auto"
+        >
+          <div className="mb-8">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
+              What we solve
+            </span>
+          </div>
+          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
+            We build solutions <br className="hidden sm:block" />
+            <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">for real problems.</em>
+          </h2>
+        </motion.div>
 
-            {/* Vertical progress */}
+        <div className="grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-24">
+          {/* ── Left: sticky ── */}
+          <div className="lg:h-[700px]">
+            <div className="lg:sticky lg:top-40">
+              {/* Vertical progress */}
             <div className="hidden lg:flex flex-col gap-4 mt-12">
               {ITEMS.map((item, i) => (
                 <button
@@ -86,7 +88,7 @@ export function ProblemSolving() {
                 >
                   <span
                     className={cn(
-                      "text-[12px] font-medium tracking-[0.1em] transition-colors duration-500",
+                      "text-[12px] font-normal tracking-[0.1em] transition-colors duration-500",
                       active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                     )}
                   >
@@ -103,8 +105,8 @@ export function ProblemSolving() {
                 </button>
               ))}
             </div>
-          </motion.div>
-        </div>
+            </div>
+          </div>
 
         {/* ── Right: scroll items ── */}
         <div className="flex flex-col gap-8 pb-[20vh] relative">
@@ -129,7 +131,7 @@ export function ProblemSolving() {
             >
               <span
                 className={cn(
-                  "text-[13px] font-medium tracking-[0.1em] mb-6 block transition-colors duration-700",
+                  "text-[13px] font-normal tracking-[0.1em] mb-6 block transition-colors duration-700",
                   active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >
@@ -137,7 +139,7 @@ export function ProblemSolving() {
               </span>
               <h3
                 className={cn(
-                  "text-[24px] lg:text-[28px] font-medium leading-[1.2] mb-5 transition-colors duration-700",
+                  "text-[24px] lg:text-[28px] font-normal leading-[1.2] mb-5 transition-colors duration-700",
                   active === i ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >
