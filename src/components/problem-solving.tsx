@@ -8,7 +8,8 @@ import {
   useInView
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { fadeUp, spectrumFloat } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
+import { SpectrumGlow } from "@/components/spectrum-glow";
 
 const ITEMS = [
   {
@@ -63,11 +64,11 @@ export function ProblemSolving() {
           >
             <div className="mb-6 flex items-center gap-3">
               <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
                 What we solve
               </span>
             </div>
-            <h2 className="text-[clamp(48px,5vw,72px)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
+            <h2 className="text-[clamp(48px,5vw,72px)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
               We build solutions
               <br className="hidden lg:block" /> for real problems.
             </h2>
@@ -85,8 +86,8 @@ export function ProblemSolving() {
                 >
                   <span
                     className={cn(
-                      "text-[12px] font-bold tracking-[0.1em] transition-colors duration-500",
-                      active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
+                      "text-[12px] font-medium tracking-[0.1em] transition-colors duration-500",
+                      active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                     )}
                   >
                     {item.num}
@@ -108,12 +109,12 @@ export function ProblemSolving() {
         {/* ── Right: scroll items ── */}
         <div className="flex flex-col gap-8 pb-[20vh] relative">
           {/* Subtle atmosphere behind the active right column */}
-          <motion.div 
-            variants={spectrumFloat}
-            initial="hidden"
-            animate={isInView ? ["show", "float"] : "hidden"}
-            className="absolute top-[20%] left-[20%] w-[400px] h-[400px] atmosphere-spectrum opacity-20 blur-[100px] pointer-events-none"
-          />
+          {isInView && (
+            <SpectrumGlow 
+              className="top-[20%] left-[20%] w-[500px] h-[500px]"
+              opacity={0.06}
+            />
+          )}
 
           {ITEMS.map((item, i) => (
             <div
@@ -128,15 +129,15 @@ export function ProblemSolving() {
             >
               <span
                 className={cn(
-                  "text-[13px] font-bold tracking-[0.1em] mb-6 block transition-colors duration-700",
-                  active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
+                  "text-[13px] font-medium tracking-[0.1em] mb-6 block transition-colors duration-700",
+                  active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >
                 {item.num}
               </span>
               <h3
                 className={cn(
-                  "text-[24px] lg:text-[28px] font-bold leading-[1.2] mb-5 transition-colors duration-700",
+                  "text-[24px] lg:text-[28px] font-medium leading-[1.2] mb-5 transition-colors duration-700",
                   active === i ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >

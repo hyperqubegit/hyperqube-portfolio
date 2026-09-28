@@ -23,15 +23,15 @@ export function CapabilityStrip() {
         {MARQUEE.map((item, i) => (
           <div key={i} className="flex items-center">
             <span
-              className="text-[14px] sm:text-[16px] font-bold tracking-[0.24em] uppercase text-white"
+              className="text-[14px] sm:text-[16px] font-medium tracking-[0.24em] uppercase text-white"
             >
               {item}
             </span>
             {/* Gray dots, orange separators */}
             <div className="flex items-center gap-6 mx-10 sm:mx-16">
-              <span className="text-[var(--color-brand-text-muted)] text-[6px]">●</span>
+              <span className="text-[var(--color-brand-text-secondary)] text-[6px]">●</span>
               <span className="text-[var(--color-brand-accent)] text-[12px] font-black italic">/</span>
-              <span className="text-[var(--color-brand-text-muted)] text-[6px]">●</span>
+              <span className="text-[var(--color-brand-text-secondary)] text-[6px]">●</span>
             </div>
           </div>
         ))}

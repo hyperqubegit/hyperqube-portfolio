@@ -10,7 +10,8 @@ import {
   useInView
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { fadeUp, mediaReveal, spectrumFloat } from "@/lib/motion";
+import { fadeUp, mediaReveal } from "@/lib/motion";
+import { SpectrumGlow } from "@/components/spectrum-glow";
 
 const STAGES = [
   { num: "01", title: "DISCOVER", desc: "Understand the problem, technical constraints, and business goals." },
@@ -55,11 +56,11 @@ export function HowWeWork() {
           >
             <div className="mb-5 flex items-center gap-3">
               <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
                 How we work
               </span>
             </div>
-            <h2 className="text-[clamp(48px,5vw,72px)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6 uppercase">
+            <h2 className="text-[clamp(48px,5vw,72px)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6 uppercase">
               Great products are built <br/>
               through clear thinking.
             </h2>
@@ -76,11 +77,9 @@ export function HowWeWork() {
             variants={mediaReveal}
             className="relative rounded-xl overflow-hidden aspect-video border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl"
           >
-            <motion.div 
-              variants={spectrumFloat}
-              initial="hidden"
-              animate={["show", "float"]}
-              className="absolute inset-0 atmosphere-spectrum opacity-20 blur-[80px]" 
+            <SpectrumGlow 
+              className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
+              opacity={0.12}
             />
             <video
               autoPlay
@@ -121,14 +120,14 @@ export function HowWeWork() {
                   />
                   <span
                     className={cn(
-                      "text-[11px] font-bold tracking-[0.22em] uppercase mb-2 transition-colors duration-500",
-                      isCurrent ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-muted)]"
+                      "text-[11px] font-medium tracking-[0.22em] uppercase mb-2 transition-colors duration-500",
+                      isCurrent ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                     )}
                   >
                     <span
                       className={cn(
                         "mr-1.5 transition-colors duration-500",
-                        isActive ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
+                        isActive ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                       )}
                     >
                       {s.num}
@@ -138,7 +137,7 @@ export function HowWeWork() {
                   <p
                     className={cn(
                       "text-[14px] leading-[1.55] transition-colors duration-500",
-                      isCurrent ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-muted)]"
+                      isCurrent ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-secondary)]"
                     )}
                   >
                     {s.desc}
@@ -156,7 +155,7 @@ export function HowWeWork() {
             {STAGES.map((s) => (
               <div key={s.num} className="relative pl-8">
                 <div className="absolute left-[-4px] top-1.5 w-4 h-4 rounded-full border-[3px] border-[var(--color-brand-accent)] bg-[var(--color-brand-bg)]" />
-                <span className="text-[11px] font-bold tracking-[0.22em] uppercase mb-1.5 block text-[var(--color-brand-text)]">
+                <span className="text-[11px] font-medium tracking-[0.22em] uppercase mb-1.5 block text-[var(--color-brand-text)]">
                   <span className="text-[var(--color-brand-accent)] mr-1.5">{s.num}</span>
                   {s.title}
                 </span>

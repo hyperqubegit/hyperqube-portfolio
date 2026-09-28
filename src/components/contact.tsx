@@ -29,15 +29,15 @@ export function Contact() {
             variants={spectrumFloat}
             initial="hidden"
             animate={isInView ? ["show", "float"] : "hidden"}
-            className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] atmosphere-spectrum opacity-60 blur-[140px] pointer-events-none rounded-full" 
+            className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] hidden opacity-60 blur-[140px] pointer-events-none rounded-full" 
           />
 
           <div className="relative z-10 max-w-[720px] mx-auto flex flex-col items-center">
-            <span className="text-[12px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase block mb-6">
+            <span className="text-[12px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase block mb-6">
               Let&apos;s talk
             </span>
 
-            <h2 className="text-[clamp(3.5rem,6vw,5rem)] font-extrabold tracking-[-0.04em] text-[var(--color-brand-text)] leading-[1.05] mb-6 uppercase">
+            <h2 className="text-[clamp(3.5rem,6vw,5rem)] font-semibold tracking-[-0.04em] text-[var(--color-brand-text)] leading-[1.05] mb-6 uppercase">
               Let&apos;s build
               <br />
               together.
@@ -61,7 +61,7 @@ export function Contact() {
                 href="mailto:hyperqube.ff@gmail.com"
                 className="group inline-flex items-center gap-3 bg-[var(--color-brand-card)] px-7 py-4 text-[14px] font-semibold text-[var(--color-brand-text)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] rounded-sm transition-all duration-300 w-full sm:w-auto justify-center"
               >
-                <Mail className="w-4 h-4 text-[var(--color-brand-text-muted)] group-hover:text-[var(--color-brand-text)] transition-colors" />
+                <Mail className="w-4 h-4 text-[var(--color-brand-text-secondary)] group-hover:text-[var(--color-brand-text)] transition-colors" />
                 hyperqube.ff@gmail.com
               </a>
             </div>

@@ -42,11 +42,11 @@ export function Technology() {
         >
           <div className="mb-6 flex items-center gap-3">
             <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+            <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
               Technology Stack
             </span>
           </div>
-          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8 uppercase">
+          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8 uppercase">
             Technology <br className="hidden md:block" />
             <em className="font-serif italic font-normal tracking-normal text-[var(--color-brand-text-secondary)]">We Actually Use.</em>
           </h2>
@@ -71,7 +71,7 @@ export function Technology() {
               }}
               className="flex flex-col"
             >
-              <h3 className="text-[14px] font-bold tracking-[0.2em] text-[var(--color-brand-text)] uppercase mb-6 pb-4 border-b border-[var(--color-brand-border)]">
+              <h3 className="text-[14px] font-medium tracking-[0.2em] text-[var(--color-brand-text)] uppercase mb-6 pb-4 border-b border-[var(--color-brand-border)]">
                 {group.category}
               </h3>
               

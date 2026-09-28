@@ -7,7 +7,8 @@ import { CAPABILITIES } from "../data/capabilities";
 import { CapabilityModal } from "./capability-modal";
 import type { Capability } from "../data/capabilities";
 import { cn } from "@/lib/utils";
-import { fadeUp, slideInRow, spectrumFloat } from "@/lib/motion";
+import { fadeUp, slideInRow } from "@/lib/motion";
+import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function ServiceIndex() {
   const [activeCap, setActiveCap] = useState<Capability | null>(null);
@@ -17,12 +18,12 @@ export function ServiceIndex() {
   return (
     <section id="what-we-build" className="py-20 lg:py-32 bg-[var(--color-brand-bg)] relative overflow-hidden">
       {/* Subtle Atmospheric Glow */}
-      <motion.div 
-        variants={spectrumFloat}
-        initial="hidden"
-        animate={isInView ? ["show", "float"] : "hidden"}
-        className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] atmosphere-warm-soft blur-[120px] rounded-full pointer-events-none"
-      />
+      {isInView && (
+        <SpectrumGlow 
+          className="top-[10%] right-[-10%] w-[800px] h-[800px]"
+          opacity={0.08}
+        />
+      )}
 
       <div
         className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
@@ -37,11 +38,11 @@ export function ServiceIndex() {
         >
           <div className="mb-6 flex items-center gap-3">
             <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+            <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
               What We Build
             </span>
           </div>
-          <h2 className="text-[clamp(48px,5vw,72px)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
+          <h2 className="text-[clamp(48px,5vw,72px)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
             From first idea to production-ready systems, we build the technology
             your business actually needs.
           </h2>
@@ -75,12 +76,12 @@ export function ServiceIndex() {
                 <span className="absolute bottom-0 left-0 h-[1.5px] bg-[var(--color-brand-accent)] w-0 group-hover:w-full transition-all duration-700 ease-out" />
 
                 {/* Number */}
-                <span className="text-[13px] font-bold tracking-[0.1em] text-[var(--color-brand-text-muted)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300 relative z-10 pl-2">
+                <span className="text-[13px] font-medium tracking-[0.1em] text-[var(--color-brand-text-secondary)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300 relative z-10 pl-2">
                   {cap.num}
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[18px] md:text-[22px] font-bold text-[var(--color-brand-text)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300 relative z-10">
+                <h3 className="text-[18px] md:text-[22px] font-medium text-[var(--color-brand-text)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300 relative z-10">
                   {cap.title}
                 </h3>
 
@@ -91,7 +92,7 @@ export function ServiceIndex() {
 
                 {/* Arrow */}
                 <span className="w-8 h-8 rounded-full flex items-center justify-center justify-self-end relative z-10 group-hover:translate-x-1.5 transition-transform duration-300">
-                  <ArrowRight className="w-4 h-4 text-[var(--color-brand-text-muted)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300" />
+                  <ArrowRight className="w-4 h-4 text-[var(--color-brand-text-secondary)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300" />
                 </span>
               </button>
             </motion.div>

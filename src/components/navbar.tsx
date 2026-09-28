@@ -48,15 +48,15 @@ export function Navbar() {
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5" onClick={closeMobile}>
           <div className="w-7 h-7 bg-[var(--color-brand-text)] rounded-[4px] flex items-center justify-center shrink-0">
-            <span className="text-[var(--color-brand-bg)] text-[9px] font-bold tracking-tight leading-none">
+            <span className="text-[var(--color-brand-bg)] text-[9px] font-medium tracking-tight leading-none">
               HQ
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] font-bold tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
+            <span className="text-[14px] font-medium tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
               HyperQube
             </span>
-            <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-muted)] uppercase leading-none mt-[2px]">
+            <span className="text-[7px] font-semibold tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
               Software &bull; Data &bull; Intelligence
             </span>
           </div>

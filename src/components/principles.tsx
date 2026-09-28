@@ -49,11 +49,11 @@ export function Principles() {
           >
             <div className="mb-6 flex items-center gap-3">
               <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+              <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
                 Core Principles
               </span>
             </div>
-            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.08] uppercase">
+            <h2 className="text-[clamp(2.5rem,4vw,4rem)] font-semibold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.08] uppercase">
               Built <br />
               Around <br />
               <em className="font-serif italic font-normal tracking-normal text-[var(--color-brand-text-secondary)]">Your Goals.</em>
@@ -84,8 +84,8 @@ export function Principles() {
 
                 <span
                   className={cn(
-                    "text-[14px] font-bold tracking-[0.1em] mb-4 block transition-colors duration-700",
-                    isCurrent ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
+                    "text-[14px] font-medium tracking-[0.1em] mb-4 block transition-colors duration-700",
+                    isCurrent ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-secondary)]"
                   )}
                 >
                   {p.num}
@@ -93,7 +93,7 @@ export function Principles() {
 
                 <h3
                   className={cn(
-                    "text-[28px] lg:text-[36px] font-bold tracking-tight leading-[1.1] mb-5 uppercase transition-colors duration-700",
+                    "text-[28px] lg:text-[36px] font-medium tracking-tight leading-[1.1] mb-5 uppercase transition-colors duration-700",
                     isActive ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                   )}
                 >
@@ -103,7 +103,7 @@ export function Principles() {
                 <p
                   className={cn(
                     "text-[18px] lg:text-[20px] leading-[1.6] max-w-[480px] transition-colors duration-700",
-                    isActive ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-muted)]"
+                    isActive ? "text-[var(--color-brand-text-secondary)]" : "text-[var(--color-brand-text-secondary)]"
                   )}
                 >
                   {p.desc}

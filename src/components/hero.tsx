@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { staggerContainer, fadeUp, lineReveal, mediaReveal, spectrumFloat } from "@/lib/motion";
+import { staggerContainer, fadeUp, lineReveal, mediaReveal } from "@/lib/motion";
+import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,18 +25,21 @@ export function Hero() {
       className="relative min-h-[88vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-hidden"
     >
       {/* Spectrum Atmospheric Glow */}
-      <motion.div 
-        variants={spectrumFloat}
-        initial="hidden"
-        animate={["show", "float"]}
-        style={{ y: glowY, opacity: glowOpacity }}
-        className="absolute top-[-10%] left-[10%] w-[1000px] h-[1000px] atmosphere-spectrum blur-[140px] pointer-events-none"
+      <SpectrumGlow 
+        className="top-[40%] left-[20%] w-[1200px] h-[900px] -translate-x-1/2 -translate-y-1/2"
+        opacity={0.8}
       />
 
       <div className="w-full max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-center">
         {/* ── Left: Copy ── */}
         <motion.div
-          variants={staggerContainer}
+          variants={{
+            ...staggerContainer,
+            show: {
+              ...staggerContainer.show,
+              transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+            }
+          }}
           initial="hidden"
           animate="show"
           style={{ y: textY }}
@@ -43,21 +47,21 @@ export function Hero() {
         >
           <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
             <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
+            <span className="text-[11px] font-medium tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
               Turn your ideas into reality
             </span>
           </motion.div>
 
-          <h1 className="text-[clamp(64px,7vw,120px)] font-extrabold tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.95] mb-8 overflow-hidden flex flex-col gap-2">
+          <h1 className="text-[clamp(64px,7vw,118px)] font-medium tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8 overflow-hidden flex flex-col gap-1">
             <motion.span variants={lineReveal} className="block">Have an Idea?</motion.span>
             <motion.span variants={lineReveal} className="block text-[var(--color-brand-text)]">
-              <em className="font-serif italic font-normal tracking-normal text-[clamp(68px,7.5vw,128px)]">We&apos;ll Build It.</em>
+              <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
             </motion.span>
           </h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-[17px] lg:text-[19px] font-medium text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]"
+            className="text-[17px] lg:text-[19px] font-normal text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]"
           >
             Custom software, digital products, intelligent systems, and
             data-driven solutions built around your business.
@@ -69,14 +73,14 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
+              className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-medium text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
             >
               Start a Project
               <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#what-we-build"
-              className="group relative inline-flex items-center gap-2 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] px-6 py-3.5 text-[14px] font-semibold text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-all rounded-sm"
+              className="group relative inline-flex items-center gap-2 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] px-6 py-3.5 text-[14px] font-medium text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-all rounded-sm"
             >
               Explore What We Build
               <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
@@ -93,7 +97,7 @@ export function Hero() {
           className="hidden lg:block relative"
         >
           {/* Subtle blue atmospheric glow behind it */}
-          <div className="absolute inset-0 atmosphere-warm opacity-80 blur-[90px] translate-y-4" />
+          <div className="absolute inset-0 hidden opacity-80 blur-[90px] translate-y-4" />
           
           <div className="relative rounded-xl overflow-hidden aspect-[4/5] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl">
             <img
@@ -111,7 +115,7 @@ export function Hero() {
             className="absolute -left-6 bottom-16 bg-[var(--color-brand-panel)] border border-[rgba(255,255,255,0.1)] px-5 py-3.5 shadow-2xl rounded-sm flex items-center gap-3"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--color-brand-accent)]" />
-            <span className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
+            <span className="text-[11px] font-medium tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
               Engineering Studio
             </span>
           </motion.div>
