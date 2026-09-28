@@ -10,7 +10,7 @@ export function HeroMedia() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
 
   return (
     <section ref={ref} className="pb-10 lg:pb-16 bg-[var(--color-brand-bg)] relative">
@@ -23,11 +23,11 @@ export function HeroMedia() {
           variants={mediaReveal}
           className="lg:hidden mb-10"
         >
-          <div className="relative rounded-xl overflow-hidden aspect-[16/10] border border-[var(--color-brand-border)] shadow-2xl bg-[var(--color-brand-card)]">
+          <div className="relative rounded-xl overflow-hidden aspect-[16/10] border border-[rgba(255,255,255,0.15)] shadow-2xl bg-[var(--color-brand-card)]">
             <img
               src="/office.avif"
               alt="HyperQube team at work"
-              className="absolute inset-0 w-full h-full object-cover opacity-90"
+              className="absolute inset-0 w-full h-full object-cover opacity-95"
             />
           </div>
         </motion.div>
@@ -36,17 +36,16 @@ export function HeroMedia() {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={mediaReveal}
-          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[var(--color-brand-border)] bg-[var(--color-brand-card)] shadow-2xl"
+          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl"
         >
-          {/* Subtle atmospheric glow behind image */}
-          <div className="absolute inset-0 glow-blue opacity-30 blur-[80px] pointer-events-none" />
+          {/* Subtle atmospheric glow behind image container (if it had spacing, but it fills the width) */}
           <motion.img
             style={{ y }}
             src="/office.avif"
             alt="HyperQube — engineering studio"
-            className="absolute top-[-8%] left-0 w-full h-[116%] object-cover opacity-90"
+            className="absolute top-[-5%] left-0 w-full h-[110%] object-cover opacity-95"
           />
         </motion.div>
       </div>

@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { staggerContainer, fadeUp, lineReveal, mediaReveal } from "@/lib/motion";
+import { staggerContainer, fadeUp, lineReveal, mediaReveal, spectrumFloat } from "@/lib/motion";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,20 +13,23 @@ export function Hero() {
   });
   
   // Parallax effects
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   return (
     <section
       ref={containerRef}
       className="relative min-h-[88vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-hidden"
     >
-      {/* Subtle Atmospheric Glow */}
+      {/* Spectrum Atmospheric Glow */}
       <motion.div 
+        variants={spectrumFloat}
+        initial="hidden"
+        animate={["show", "float"]}
         style={{ y: glowY, opacity: glowOpacity }}
-        className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] glow-blue blur-[120px] rounded-full pointer-events-none"
+        className="absolute top-[-10%] left-[10%] w-[1000px] h-[1000px] atmosphere-spectrum blur-[140px] pointer-events-none"
       />
 
       <div className="w-full max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-center">
@@ -38,21 +41,23 @@ export function Hero() {
           style={{ y: textY }}
           className="relative z-10"
         >
-          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-7">
-            <span className="h-[2px] w-7 bg-[var(--color-brand-blue)]" />
-            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-blue)] uppercase">
+          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+            <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
+            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
               Turn your ideas into reality
             </span>
           </motion.div>
 
-          <h1 className="text-[clamp(3rem,6.5vw,5.25rem)] font-bold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.06] mb-7 overflow-hidden flex flex-col gap-1">
+          <h1 className="text-[clamp(64px,7vw,120px)] font-extrabold tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.95] mb-8 overflow-hidden flex flex-col gap-2">
             <motion.span variants={lineReveal} className="block">Have an Idea?</motion.span>
-            <motion.span variants={lineReveal} className="block text-[var(--color-brand-blue)]">We&apos;ll Build&nbsp;It.</motion.span>
+            <motion.span variants={lineReveal} className="block text-[var(--color-brand-text)]">
+              <em className="font-serif italic font-normal tracking-normal text-[clamp(68px,7.5vw,128px)]">We&apos;ll Build It.</em>
+            </motion.span>
           </h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] mb-10 max-w-[480px]"
+            className="text-[17px] lg:text-[19px] font-medium text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]"
           >
             Custom software, digital products, intelligent systems, and
             data-driven solutions built around your business.
@@ -60,21 +65,21 @@ export function Hero() {
 
           <motion.div
             variants={fadeUp}
-            className="flex flex-wrap items-center gap-4"
+            className="flex flex-wrap items-center gap-5"
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 bg-[var(--color-brand-blue)] px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-[var(--color-brand-blue-light)] transition-all duration-300"
+              className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-semibold text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
             >
               Start a Project
               <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#what-we-build"
-              className="group relative inline-flex items-center gap-1.5 px-5 py-3.5 text-[14px] font-semibold text-[var(--color-brand-text)] hover:text-[var(--color-brand-blue)] transition-colors"
+              className="group relative inline-flex items-center gap-2 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] hover:border-[var(--color-brand-border-hover)] px-6 py-3.5 text-[14px] font-semibold text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-all rounded-sm"
             >
               Explore What We Build
-              <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </a>
           </motion.div>
         </motion.div>
@@ -87,13 +92,14 @@ export function Hero() {
           style={{ y: imgY }}
           className="hidden lg:block relative"
         >
-          <div className="relative rounded-xl overflow-hidden aspect-[4/5] border border-[var(--color-brand-border)] bg-[var(--color-brand-card)] shadow-2xl">
-            {/* Subtle inner glow behind image */}
-            <div className="absolute inset-0 glow-blue opacity-50 blur-[80px]" />
+          {/* Subtle blue atmospheric glow behind it */}
+          <div className="absolute inset-0 atmosphere-warm opacity-80 blur-[90px] translate-y-4" />
+          
+          <div className="relative rounded-xl overflow-hidden aspect-[4/5] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl">
             <img
               src="/office.avif"
               alt="HyperQube team at work"
-              className="absolute inset-0 w-full h-full object-cover opacity-90"
+              className="absolute inset-0 w-full h-[110%] object-cover opacity-95"
             />
           </div>
 
@@ -101,12 +107,12 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-            className="absolute -left-8 bottom-14 bg-[var(--color-brand-panel)] border border-[var(--color-brand-border)] px-4 py-3 shadow-xl rounded-md flex items-center gap-3"
+            transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+            className="absolute -left-6 bottom-16 bg-[var(--color-brand-panel)] border border-[rgba(255,255,255,0.1)] px-5 py-3.5 shadow-2xl rounded-sm flex items-center gap-3"
           >
-            <span className="w-2 h-2 rounded-full bg-[var(--color-brand-blue)]" />
-            <span className="text-[12px] font-bold tracking-[0.12em] text-[var(--color-brand-text)] uppercase">
-              Engineering&nbsp;Studio
+            <span className="w-2 h-2 rounded-full bg-[var(--color-brand-accent)]" />
+            <span className="text-[11px] font-bold tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
+              Engineering Studio
             </span>
           </motion.div>
         </motion.div>

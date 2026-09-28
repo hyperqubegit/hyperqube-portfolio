@@ -4,49 +4,60 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { fadeUp, slideInRow } from "@/lib/motion";
 
-const TECH = [
-  { category: "PRODUCT", items: ["Web", "Mobile", "SaaS", "Platforms"] },
-  { category: "SYSTEMS", items: ["APIs", "Backend", "Databases", "Integrations"] },
-  { category: "DATA", items: ["Analytics", "Dashboards", "Data Pipelines"] },
-  { category: "INTELLIGENCE", items: ["Machine Learning", "AI", "Computer Vision"] },
-  { category: "INFRASTRUCTURE", items: ["Cloud", "Deployment", "Monitoring", "Security"] },
+const TECH_STACK = [
+  {
+    category: "FRONTEND",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    category: "BACKEND",
+    items: ["Node.js", "Python", "FastAPI", "REST APIs"],
+  },
+  {
+    category: "DATA",
+    items: ["PostgreSQL", "Supabase", "Firebase", "SQLite"],
+  },
+  {
+    category: "AI / ML",
+    items: ["Python", "scikit-learn", "OpenAI APIs", "Computer Vision", "Machine Learning"],
+  },
+  {
+    category: "INFRASTRUCTURE",
+    items: ["Vercel", "Docker", "GitHub", "Cloud platforms"],
+  },
 ];
 
 export function Technology() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative">
-      {/* Background glow */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] glow-white opacity-20 blur-[100px] pointer-events-none" />
-
+    <section className="py-24 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10" ref={ref}>
         <motion.div
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           variants={fadeUp}
-          className="mb-14 lg:mb-20"
+          className="mb-20 lg:mb-32"
         >
-          <div className="mb-5 flex items-center gap-3">
-            <span className="h-[2px] w-6 bg-[var(--color-brand-blue)]" />
-            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-blue)] uppercase">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
+            <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
               Technology Stack
             </span>
           </div>
-          <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.12] mb-5 uppercase">
-            Technology follows
-            <br className="hidden md:block" /> the problem.
+          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8 uppercase">
+            Technology <br className="hidden md:block" />
+            <em className="font-serif italic font-normal tracking-normal text-[var(--color-brand-text-secondary)]">We Actually Use.</em>
           </h2>
-          <p className="text-[17px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[540px]">
-            We choose the tools based on what needs to be built — not because a
-            technology is trendy.
+          <p className="text-[18px] lg:text-[20px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[580px]">
+            We choose the tools that fit the problem, the product, and the team — not the trend.
           </p>
         </motion.div>
 
-        {/* ── Technical Index Rows ── */}
-        <div className="border-t border-[var(--color-brand-border)]">
-          {TECH.map((group, i) => (
+        {/* ── Technical Editorial Index ── */}
+        <div className="grid lg:grid-cols-2 gap-x-16 gap-y-16 lg:gap-y-24">
+          {TECH_STACK.map((group, i) => (
             <motion.div
               key={group.category}
               initial="hidden"
@@ -55,29 +66,29 @@ export function Technology() {
                 ...slideInRow,
                 show: {
                   ...slideInRow.show,
-                  transition: { ...slideInRow.show.transition, delay: 0.08 * i },
+                  transition: { ...slideInRow.show.transition, delay: 0.1 * i },
                 },
               }}
-              className="group flex flex-col md:flex-row md:items-center py-6 border-b border-[var(--color-brand-border)] transition-colors duration-300 hover:bg-[rgba(255,255,255,0.02)] px-4 -mx-4 rounded-sm"
+              className="flex flex-col"
             >
-              <div className="w-full md:w-[30%] mb-3 md:mb-0">
-                <h3 className="text-[13px] font-bold tracking-[0.18em] text-[var(--color-brand-text)] uppercase group-hover:text-[var(--color-brand-blue)] transition-colors duration-300">
-                  {group.category}
-                </h3>
-              </div>
-              <div className="w-full md:w-[70%]">
-                <ul className="flex flex-wrap gap-x-8 gap-y-3">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2.5 text-[15px] text-[var(--color-brand-text-secondary)] group-hover:text-[var(--color-brand-text)] transition-colors duration-300"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-[var(--color-brand-border)] group-hover:bg-[var(--color-brand-blue)] transition-colors duration-300 shrink-0" />
+              <h3 className="text-[14px] font-bold tracking-[0.2em] text-[var(--color-brand-text)] uppercase mb-6 pb-4 border-b border-[var(--color-brand-border)]">
+                {group.category}
+              </h3>
+              
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
+                {group.items.map((item) => (
+                  <li key={item} className="group relative inline-flex items-center gap-3 w-fit cursor-default">
+                    {/* Tiny orange indicator */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-border-hover)] group-hover:bg-[var(--color-brand-accent)] transition-colors duration-300 shrink-0" />
+                    
+                    <span className="text-[16px] lg:text-[17px] font-medium text-[var(--color-brand-text-secondary)] group-hover:text-[var(--color-brand-text)] transition-colors duration-300 relative">
                       {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      {/* Subtle underline expands */}
+                      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--color-brand-accent)] group-hover:w-full transition-all duration-500 ease-out" />
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

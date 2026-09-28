@@ -2,10 +2,13 @@
 
 import { useRef, useState } from "react";
 import {
+  motion,
   useScroll,
   useMotionValueEvent,
+  useInView
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { fadeUp, spectrumFloat } from "@/lib/motion";
 
 const ITEMS = [
   {
@@ -32,6 +35,7 @@ const ITEMS = [
 
 export function ProblemSolving() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
   const [active, setActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
@@ -46,29 +50,34 @@ export function ProblemSolving() {
   return (
     <section
       ref={containerRef}
-      className="py-20 lg:py-28 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative"
+      className="py-20 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative"
     >
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-20">
+      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1fr_1.25fr] gap-12 lg:gap-24 relative z-10">
         {/* ── Left: sticky ── */}
         <div className="lg:h-[700px]">
-          <div className="lg:sticky lg:top-36">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-[2px] w-6 bg-[var(--color-brand-blue)]" />
-              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-blue)] uppercase">
+          <motion.div 
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            variants={fadeUp}
+            className="lg:sticky lg:top-40"
+          >
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-[2px] w-6 bg-[var(--color-brand-accent)]" />
+              <span className="text-[11px] font-bold tracking-[0.22em] text-[var(--color-brand-accent)] uppercase">
                 What we solve
               </span>
             </div>
-            <h2 className="text-[clamp(2.25rem,4vw,3.25rem)] font-bold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.12] mb-6">
+            <h2 className="text-[clamp(48px,5vw,72px)] font-extrabold tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
               We build solutions
               <br className="hidden lg:block" /> for real problems.
             </h2>
 
             {/* Vertical progress */}
-            <div className="hidden lg:flex flex-col gap-3 mt-10">
+            <div className="hidden lg:flex flex-col gap-4 mt-12">
               {ITEMS.map((item, i) => (
                 <button
                   key={item.num}
-                  className="flex items-center gap-4 text-left group"
+                  className="flex items-center gap-5 text-left group"
                   onClick={() => {
                     const el = document.getElementById(`solve-${item.num}`);
                     el?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -76,8 +85,8 @@ export function ProblemSolving() {
                 >
                   <span
                     className={cn(
-                      "text-[12px] font-bold tracking-[0.1em] transition-colors duration-300",
-                      active === i ? "text-[var(--color-brand-blue)]" : "text-[var(--color-brand-text-muted)]"
+                      "text-[12px] font-bold tracking-[0.1em] transition-colors duration-500",
+                      active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
                     )}
                   >
                     {item.num}
@@ -86,46 +95,54 @@ export function ProblemSolving() {
                     className={cn(
                       "h-[2px] transition-all duration-500",
                       active === i
-                        ? "w-16 bg-[var(--color-brand-blue)]"
+                        ? "w-16 bg-[var(--color-brand-accent)]"
                         : "w-8 bg-[var(--color-brand-border)]"
                     )}
                   />
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* ── Right: scroll items ── */}
-        <div className="flex flex-col gap-6 pb-[20vh]">
+        <div className="flex flex-col gap-8 pb-[20vh] relative">
+          {/* Subtle atmosphere behind the active right column */}
+          <motion.div 
+            variants={spectrumFloat}
+            initial="hidden"
+            animate={isInView ? ["show", "float"] : "hidden"}
+            className="absolute top-[20%] left-[20%] w-[400px] h-[400px] atmosphere-spectrum opacity-20 blur-[100px] pointer-events-none"
+          />
+
           {ITEMS.map((item, i) => (
             <div
               key={item.num}
               id={`solve-${item.num}`}
               className={cn(
-                "p-8 lg:p-10 border transition-all duration-500",
+                "p-8 lg:p-12 border transition-all duration-700 relative z-10",
                 active === i
-                  ? "bg-[var(--color-brand-panel)] border-[var(--color-brand-border-blue)] shadow-[0_8px_40px_-12px_rgba(0,102,255,0.08)] opacity-100"
+                  ? "bg-[var(--color-brand-panel)] border-[var(--color-brand-border-accent)] opacity-100 shadow-[0_16px_40px_-12px_rgba(255,75,62,0.06)]"
                   : "bg-transparent border-[var(--color-brand-border)] opacity-[0.35]"
               )}
             >
               <span
                 className={cn(
-                  "text-[13px] font-bold tracking-[0.1em] mb-5 block transition-colors duration-300",
-                  active === i ? "text-[var(--color-brand-blue)]" : "text-[var(--color-brand-text-muted)]"
+                  "text-[13px] font-bold tracking-[0.1em] mb-6 block transition-colors duration-700",
+                  active === i ? "text-[var(--color-brand-accent)]" : "text-[var(--color-brand-text-muted)]"
                 )}
               >
                 {item.num}
               </span>
               <h3
                 className={cn(
-                  "text-[22px] lg:text-[26px] font-bold leading-[1.2] mb-4 transition-colors duration-300",
+                  "text-[24px] lg:text-[28px] font-bold leading-[1.2] mb-5 transition-colors duration-700",
                   active === i ? "text-[var(--color-brand-text)]" : "text-[var(--color-brand-text-secondary)]"
                 )}
               >
                 {item.title}
               </h3>
-              <p className="text-[16px] text-[var(--color-brand-text-secondary)] leading-[1.65]">
+              <p className="text-[17px] text-[var(--color-brand-text-secondary)] leading-[1.65]">
                 {item.desc}
               </p>
             </div>

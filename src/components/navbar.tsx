@@ -82,7 +82,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-[var(--color-brand-blue)] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[var(--color-brand-blue-light)] transition-colors rounded-sm"
+            className="hidden md:inline-flex items-center gap-1.5 bg-[var(--color-brand-accent)] px-4 py-[7px] text-[13px] font-semibold text-white hover:bg-[var(--color-brand-accent-light)] transition-colors rounded-sm"
           >
             Start a Project
             <svg
@@ -137,7 +137,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={closeMobile}
-              className="mt-3 mb-1 flex items-center justify-center bg-[var(--color-brand-blue)] rounded-sm py-2.5 text-[14px] font-medium text-white"
+              className="mt-3 mb-1 flex items-center justify-center bg-[var(--color-brand-accent)] rounded-sm py-2.5 text-[14px] font-medium text-white"
             >
               Start a Project
             </a>
