@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Search, Layers, Rocket } from "lucide-react";
-import { fadeUp } from "@/lib/motion";
+import { BlurryText } from "@/components/blurry-text";
+import { fadeUp, textReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
 const PROCESS_STEPS = [
@@ -45,28 +46,38 @@ export function Process() {
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          variants={fadeUp}
-          className="mb-14 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto"
-        >
-          <div className="mb-8">
+        <div className="mb-14 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8"
+          >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Process
             </span>
-          </div>
+          </motion.div>
           
-          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6">
+          <BlurryText 
+            as="h2" 
+            delay={0.1}
+            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6"
+          >
             How we turn <br className="hidden sm:block" />
             <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">ideas </em>
             into something real.
-          </h2>
+          </BlurryText>
           
-          <p className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[560px]">
+          <motion.p
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            variants={textReveal}
+            transition={{ delay: 0.8 }}
+            className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[560px]"
+          >
             From the first conversation to the final launch, we keep the process clear, focused, and built around what your business actually needs.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* 3-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20 lg:mb-24">

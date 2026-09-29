@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { staggerContainer, fadeUp, lineReveal, mediaReveal } from "@/lib/motion";
+import { BlurryText } from "@/components/blurry-text";
+import { fadeUp, mediaReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Hero() {
@@ -17,7 +18,6 @@ export function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  // const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.2]); // Optional if we want to fade it
 
   return (
     <section
@@ -35,33 +35,33 @@ export function Hero() {
       <div className="w-full max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-center">
         {/* ── Left: Copy ── */}
         <motion.div
-          variants={{
-            ...staggerContainer,
-            show: {
-              ...staggerContainer.show,
-              transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-            }
-          }}
-          initial="hidden"
-          animate="show"
           style={{ y: textY }}
           className="relative z-10"
         >
-          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3 mb-8"
+          >
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Turn your ideas into reality
             </span>
           </motion.div>
 
-          <h1 className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8 overflow-hidden flex flex-col gap-1">
-            <motion.span variants={lineReveal} className="block">Have an Idea?</motion.span>
-            <motion.span variants={lineReveal} className="block text-[var(--color-brand-text)]">
-              <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
-            </motion.span>
-          </h1>
+          <BlurryText 
+            as="h1" 
+            delay={0.2}
+            className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8"
+          >
+            Have an Idea? <br />
+            <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
+          </BlurryText>
 
           <motion.p
-            variants={fadeUp}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="text-[17px] lg:text-[19px] font-normal text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]"
           >
             Custom software, digital products, intelligent systems, and
@@ -69,7 +69,9 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            variants={fadeUp}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap items-center gap-5"
           >
             <a
