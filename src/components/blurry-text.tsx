@@ -38,7 +38,7 @@ export function BlurryText({ children, className, as: Component = "h2", delay = 
       scale: 1,
       transition: {
         duration: duration,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
