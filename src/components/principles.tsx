@@ -31,15 +31,15 @@ export function Principles() {
   return (
     <section
       ref={containerRef}
-      className="py-20 lg:py-32 bg-[var(--color-brand-bg)] relative border-t border-[var(--color-brand-border)] overflow-hidden"
+      className="py-16 lg:py-24 bg-[var(--color-brand-bg)] relative border-t border-[var(--color-brand-border)] overflow-hidden"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-        <div className="mb-16 lg:mb-24 flex flex-col items-center text-center">
+        <div className="mb-12 lg:mb-16 flex flex-col items-center text-center">
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-8"
+            className="mb-10"
           >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Built Around Your Goals
@@ -59,15 +59,15 @@ export function Principles() {
           </BlurryText>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Left Column - Muted */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[var(--color-brand-bg)] border border-[var(--color-brand-border)] rounded-2xl p-8 lg:p-14 opacity-[0.65] relative overflow-hidden"
+            className="bg-[var(--color-brand-bg)] border border-[var(--color-brand-border)] rounded-2xl p-8 lg:p-12 opacity-[0.65] relative overflow-hidden"
           >
-            <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] uppercase mb-8 lg:mb-12">
+            <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text-very-muted)] uppercase mb-8 lg:mb-10">
               Without Purposeful Engineering
             </h3>
             
@@ -90,7 +90,7 @@ export function Principles() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[var(--color-brand-card)] border border-[rgba(255,255,255,0.12)] rounded-2xl p-8 lg:p-14 relative overflow-hidden shadow-2xl"
+            className="bg-[var(--color-brand-card)] border border-[rgba(255,255,255,0.12)] rounded-2xl p-8 lg:p-12 relative overflow-hidden shadow-2xl"
           >
             <div className="absolute inset-0 opacity-40 pointer-events-none">
               <SpectrumGlow
@@ -100,7 +100,7 @@ export function Principles() {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text)] uppercase mb-8 lg:mb-12 flex items-center gap-3">
+              <h3 className="text-[14px] font-medium tracking-[0.1em] text-[var(--color-brand-text)] uppercase mb-8 lg:mb-10 flex items-center gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] shadow-[0_0_8px_rgba(255,75,62,0.6)]" />
                 With HyperQube
               </h3>

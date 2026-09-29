@@ -59,7 +59,6 @@ export function BlurryText({ children, className, as: Component = "h2", delay = 
             <motion.span
               key={i}
               variants={item}
-              className="inline-block"
               style={{ transformStyle: "preserve-3d", transformOrigin: "center bottom" }}
             >
               {child}
@@ -67,20 +66,22 @@ export function BlurryText({ children, className, as: Component = "h2", delay = 
           );
         }
         
-        // Do not wrap <br /> in an inline-block motion span, otherwise it breaks formatting
         if (child.type === "br") {
           return child;
         }
         
+        const MotionChild = motion(child.type as any);
         return (
-          <motion.span
+          <MotionChild
             key={i}
+            {...(child.props as any)}
             variants={item}
-            className="inline-block"
-            style={{ transformStyle: "preserve-3d", transformOrigin: "center bottom" }}
-          >
-            {child}
-          </motion.span>
+            style={{
+              ...(child.props as any).style,
+              transformStyle: "preserve-3d",
+              transformOrigin: "center bottom",
+            }}
+          />
         );
       })}
     </MotionComponent>

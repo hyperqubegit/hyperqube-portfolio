@@ -31,22 +31,6 @@ export function HeroMedia() {
             />
           </div>
         </motion.div>
-
-        {/* Full-width editorial photo — visible on desktop */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={mediaReveal}
-          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl"
-        >
-          <motion.img
-            style={{ y }}
-            src="/office.avif"
-            alt="HyperQube — engineering studio"
-            className="absolute top-[-5%] left-0 w-full h-[110%] object-cover opacity-95"
-          />
-        </motion.div>
       </div>
     </section>
   );
