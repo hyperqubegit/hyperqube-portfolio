@@ -61,8 +61,10 @@ export function ServiceIndex() {
             delay={0.1}
             className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
           >
-            What can we <br className="hidden sm:block" />
-            <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">build for you?</em>
+            <span>What can we</span>
+            <span>
+              <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">build for you?</em>
+            </span>
           </BlurryText>
 
           <motion.p

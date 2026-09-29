@@ -46,8 +46,10 @@ export function Contact() {
             duration={1.2}
             className="text-[clamp(44px,6vw,72px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6"
           >
-            Ready to turn your <br className="hidden sm:block" />
-            ideas into <em className="font-editorial italic font-normal text-[clamp(48px,6.5vw,80px)] text-[var(--color-brand-text-secondary)]">reality?</em>
+            <span>Ready to turn your</span>
+            <span>
+              ideas into <em className="font-editorial italic font-normal text-[clamp(48px,6.5vw,80px)] text-[var(--color-brand-text-secondary)]">reality?</em>
+            </span>
           </BlurryText>
 
           <motion.p

@@ -54,8 +54,10 @@ export function Hero() {
             delay={0.2}
             className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8"
           >
-            Have an Idea? <br />
-            <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
+            <span>Have an Idea?</span>
+            <span>
+              <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
+            </span>
           </BlurryText>
 
           <motion.p

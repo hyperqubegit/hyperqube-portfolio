@@ -51,8 +51,10 @@ export function Principles() {
             delay={0.1}
             className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
           >
-            Engineering with <br className="hidden sm:block" />
-            <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">Purpose.</em>
+            <span>Engineering with</span>
+            <span>
+              <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">Purpose.</em>
+            </span>
           </BlurryText>
         </div>
 

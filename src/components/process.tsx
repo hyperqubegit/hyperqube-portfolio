@@ -63,9 +63,11 @@ export function Process() {
             delay={0.1}
             className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6"
           >
-            How we turn <br className="hidden sm:block" />
-            <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">ideas </em>
-            into something real.
+            <span>How we turn</span>
+            <span>
+              <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">ideas </em>
+              into something real.
+            </span>
           </BlurryText>
           
           <motion.p
