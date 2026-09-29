@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Search, Layers, Rocket } from "lucide-react";
 import { fadeUp } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
@@ -31,23 +31,25 @@ export function Process() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  // Subtle parallax for the video container
+  const videoY = useTransform(scrollYProgress, [0, 1], [15, -15]);
+
   return (
     <section
       ref={ref}
       className="py-32 lg:py-40 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
-      {/* Subtle Spectrum Bloom */}
-      <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none opacity-40">
-        <SpectrumGlow variant="section" />
-      </div>
-
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
         <motion.div
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           variants={fadeUp}
-          className="mb-20 lg:mb-32 flex flex-col items-center text-center max-w-[800px] mx-auto"
+          className="mb-14 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto"
         >
           <div className="mb-8">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
@@ -67,7 +69,7 @@ export function Process() {
         </motion.div>
 
         {/* 3-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20 lg:mb-24">
           {PROCESS_STEPS.map((step, i) => (
             <motion.div
               key={step.num}
@@ -98,6 +100,35 @@ export function Process() {
             </motion.div>
           ))}
         </div>
+
+        {/* Meeting Video Block */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full max-w-[1320px] mx-auto"
+        >
+          {/* Subtle Spectrum behind video */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none opacity-30 -z-10 mix-blend-screen">
+            <SpectrumGlow variant="card" />
+          </div>
+
+          <motion.div
+            style={{ y: videoY }}
+            className="relative rounded-2xl overflow-hidden aspect-[16/9] lg:aspect-[21/9] border border-[rgba(255,255,255,0.08)] bg-[#050505]"
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-100"
+            >
+              <source src="/meeting.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
