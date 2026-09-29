@@ -52,6 +52,7 @@ export function Principles() {
             className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
           >
             <span>Engineering with</span>
+            <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">Purpose.</em>
             </span>

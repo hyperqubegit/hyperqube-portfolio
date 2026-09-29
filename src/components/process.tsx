@@ -42,16 +42,16 @@ export function Process() {
   return (
     <section
       ref={ref}
-      className="py-32 lg:py-40 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
+      className="py-24 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="mb-14 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
+        <div className="mb-14 flex flex-col items-center text-center max-w-[800px] mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-8"
+            className="mb-14"
           >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Process
@@ -61,9 +61,10 @@ export function Process() {
           <BlurryText 
             as="h2" 
             delay={0.1}
-            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-6"
+            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8"
           >
             <span>How we turn</span>
+            <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">ideas </em>
               into something real.
@@ -82,13 +83,13 @@ export function Process() {
         </div>
 
         {/* 3-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20 lg:mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-16 lg:mb-20">
           {PROCESS_STEPS.map((step, i) => (
             <motion.div
               key={step.num}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.2 + (i * 0.15), ease: [0.16, 1, 0.3, 1] }}
               className="group flex flex-col items-center text-center md:items-start md:text-left"
             >
               <div className="flex items-center gap-4 mb-8 w-full justify-center md:justify-start">
@@ -116,20 +117,20 @@ export function Process() {
 
         {/* Meeting Video Block */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 30 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full max-w-[1320px] mx-auto"
         >
           {/* Subtle Spectrum behind video */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none opacity-30 -z-10 mix-blend-screen">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none opacity-20 -z-10">
             <SpectrumGlow variant="card" />
           </div>
 
           <motion.div
             style={{ y: videoY }}
-            className="relative rounded-2xl overflow-hidden aspect-[16/9] lg:aspect-[21/9] border border-[rgba(255,255,255,0.08)] bg-[#050505]"
+            className="relative rounded-2xl overflow-hidden aspect-[16/9] lg:aspect-[21/9] border border-[rgba(255,255,255,0.15)] bg-[#050505]"
           >
             <video
               autoPlay

@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 interface BlurryTextProps {
   children: React.ReactNode;
@@ -51,15 +50,33 @@ export function BlurryText({ children, className, as: Component = "h2", delay = 
       initial="hidden"
       animate={isInView ? "show" : "hidden"}
       variants={container}
-      className={cn("flex flex-col", className)}
+      className={className}
       style={{ perspective: "1200px" }}
     >
       {React.Children.map(children, (child, i) => {
+        if (!React.isValidElement(child)) {
+          return (
+            <motion.span
+              key={i}
+              variants={item}
+              className="inline-block"
+              style={{ transformStyle: "preserve-3d", transformOrigin: "center bottom" }}
+            >
+              {child}
+            </motion.span>
+          );
+        }
+        
+        // Do not wrap <br /> in an inline-block motion span, otherwise it breaks formatting
+        if (child.type === "br") {
+          return child;
+        }
+        
         return (
           <motion.span
             key={i}
             variants={item}
-            className="block"
+            className="inline-block"
             style={{ transformStyle: "preserve-3d", transformOrigin: "center bottom" }}
           >
             {child}

@@ -10,7 +10,7 @@ import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function ServiceIndex() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: true, margin: "-50px" });
 
   // Map to create a diverse layout. E.g. some span 1, some span 2 in a 2-column grid.
   const getColSpan = (index: number) => {
@@ -38,18 +38,18 @@ export function ServiceIndex() {
   };
 
   return (
-    <section id="what-we-build" className="py-20 lg:py-32 bg-[var(--color-brand-bg)] relative overflow-hidden">
+    <section id="what-we-build" className="py-20 lg:py-28 bg-[var(--color-brand-bg)] relative overflow-hidden">
       <div
         className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
         ref={containerRef}
       >
         {/* ── Heading ── */}
-        <div className="mb-16 lg:mb-24 flex flex-col items-center text-center max-w-[800px] mx-auto">
+        <div className="mb-14 lg:mb-20 flex flex-col items-center text-center max-w-[800px] mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-8"
+            className="mb-14"
           >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               What We Build
@@ -62,6 +62,7 @@ export function ServiceIndex() {
             className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
           >
             <span>What can we</span>
+            <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">build for you?</em>
             </span>
@@ -72,7 +73,7 @@ export function ServiceIndex() {
             animate={isInView ? "show" : "hidden"}
             variants={textReveal}
             transition={{ delay: 0.8 }}
-            className="mt-6 text-[16px] text-[var(--color-brand-text-secondary)] max-w-[600px] mx-auto"
+            className="mt-8 text-[16px] text-[var(--color-brand-text-secondary)] max-w-[600px] mx-auto"
           >
             From first idea to production-ready systems, we build the technology
             your business actually needs.
@@ -84,8 +85,8 @@ export function ServiceIndex() {
           {CAPABILITIES.map((cap, i) => (
             <motion.div
               key={cap.num}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 * i }}
               className={cn(
                 "group relative bg-[var(--color-brand-card)] border border-[var(--color-brand-border)] rounded-2xl p-10 lg:p-14 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)]",
