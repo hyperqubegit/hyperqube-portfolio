@@ -38,15 +38,33 @@ export function HeroMedia() {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
           variants={mediaReveal}
-          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl"
+          className="hidden lg:block relative rounded-2xl overflow-hidden aspect-[21/8] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl mb-10"
         >
-          {/* Subtle atmospheric glow behind image container (if it had spacing, but it fills the width) */}
           <motion.img
             style={{ y }}
             src="/office.avif"
             alt="HyperQube — engineering studio"
             className="absolute top-[-5%] left-0 w-full h-[110%] object-cover opacity-95"
           />
+        </motion.div>
+
+        {/* Meeting Video Block */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={mediaReveal}
+          className="relative rounded-2xl overflow-hidden aspect-video lg:aspect-[21/9] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl"
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-90 mix-blend-screen"
+          >
+            <source src="/meeting.mp4" type="video/mp4" />
+          </video>
         </motion.div>
       </div>
     </section>
