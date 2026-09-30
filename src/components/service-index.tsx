@@ -8,19 +8,27 @@ import { cn } from "@/lib/utils";
 
 const CardAtmosphere = ({ index }: { index: number }) => {
   const atmospheres = [
-    { background: "radial-gradient(circle at 0% 0%, rgba(0, 180, 255, 0.15), transparent 65%)" }, // 01 Web: cyan/blue top-left
-    { background: "radial-gradient(circle at 100% 0%, rgba(255, 120, 0, 0.15), transparent 65%)" }, // 02 Custom: orange top-right
-    { background: "radial-gradient(circle at 100% 100%, rgba(130, 80, 255, 0.15), transparent 65%)" }, // 03 SaaS: violet/blue bottom-right
-    { background: "radial-gradient(circle at 0% 100%, rgba(255, 75, 50, 0.15), transparent 65%)" }, // 04 Data: warm orange/red bottom-left
-    { background: "radial-gradient(circle at 100% 0%, rgba(100, 150, 255, 0.15), transparent 65%)" }, // 05 AI: blue/violet top-right
-    { background: "radial-gradient(circle at 100% 100%, rgba(255, 60, 40, 0.15), transparent 65%)" }, // 06 Automation: red/orange bottom-right
-    { background: "radial-gradient(circle at 0% 0%, rgba(255, 200, 150, 0.12), transparent 65%)" }, // 07 UI/UX: warm white/orange top-left
-    { background: "radial-gradient(circle at 100% 100%, rgba(0, 200, 255, 0.15), transparent 65%)" }, // 08 Backend: cyan/blue bottom-right
+    // 01 Web Applications - cyan/electric blue top-left
+    { background: "radial-gradient(circle at 0% 0%, rgba(30, 150, 255, 0.32), rgba(30, 150, 255, 0.12) 28%, transparent 62%)" },
+    // 02 Custom Software - orange/warm amber top-right
+    { background: "radial-gradient(circle at 100% 0%, rgba(255, 120, 35, 0.30), rgba(255, 70, 30, 0.12) 30%, transparent 62%)" },
+    // 03 SaaS Products - blue/violet right
+    { background: "radial-gradient(circle at 100% 50%, rgba(80, 120, 255, 0.26), rgba(130, 70, 255, 0.12) 30%, transparent 65%)" },
+    // 04 Data & Analytics - warm red/orange bottom-left
+    { background: "radial-gradient(circle at 0% 100%, rgba(255, 65, 45, 0.28), rgba(255, 120, 50, 0.10) 30%, transparent 65%)" },
+    // 05 AI & Intelligent Systems - blue/cyan top-right
+    { background: "radial-gradient(circle at 100% 0%, rgba(25, 145, 255, 0.30), rgba(80, 90, 255, 0.12) 30%, transparent 65%)" },
+    // 06 Automation - orange/red bottom-right
+    { background: "radial-gradient(circle at 100% 100%, rgba(255, 90, 30, 0.28), rgba(255, 50, 20, 0.12) 30%, transparent 65%)" },
+    // 07 UI/UX Design - warm white/soft amber top-left
+    { background: "radial-gradient(circle at 0% 0%, rgba(255, 220, 180, 0.22), rgba(255, 180, 100, 0.10) 30%, transparent 65%)" },
+    // 08 Backend & APIs - cyan/blue bottom-right
+    { background: "radial-gradient(circle at 100% 100%, rgba(20, 180, 255, 0.30), rgba(20, 120, 255, 0.12) 30%, transparent 65%)" },
   ];
   return (
     <div 
-      className="absolute inset-0 opacity-[0.12] group-hover:opacity-[0.25] transition-opacity duration-700 pointer-events-none z-0"
-      style={{ ...atmospheres[index % atmospheres.length], filter: "blur(60px)" }}
+      className="absolute inset-0 opacity-85 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 transform scale-[1.15]"
+      style={{ ...atmospheres[index % atmospheres.length], filter: "blur(65px)" }}
     />
   );
 };
@@ -93,35 +101,35 @@ export function ServiceIndex() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.08 * i }}
               className={cn(
-                "group relative bg-[#090909] border border-[rgba(255,255,255,0.08)] rounded-[20px] overflow-hidden transition-all duration-500 hover:-translate-y-[3px] hover:border-[rgba(255,255,255,0.14)] flex flex-col cursor-pointer min-h-[300px]",
+                "group relative bg-[#090909] border border-[rgba(255,255,255,0.09)] rounded-[20px] overflow-hidden transition-all duration-500 hover:-translate-y-[3px] hover:border-[rgba(255,255,255,0.16)] flex flex-col cursor-pointer min-h-[270px] lg:min-h-[280px]",
                 getColSpan(i)
               )}
               onClick={() => setSelectedService(cap)}
             >
               <CardAtmosphere index={i} />
 
-              <div className="relative z-10 flex flex-col items-center flex-1 w-full h-full p-8 lg:p-10">
+              <div className="relative z-10 flex flex-col items-center justify-between flex-1 w-full h-full p-8 lg:px-10 lg:py-8">
                 
                 {/* Number & Accent */}
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-2 mt-1">
                   <span className="text-[12px] tracking-[0.15em] font-mono text-[#7A7A7A]">
                     {cap.num}
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#404040] group-hover:bg-[#FF4B3E] transition-colors duration-500" />
                 </div>
 
-                {/* Title */}
-                <h3 className="mt-8 lg:mt-9 text-[26px] lg:text-[28px] font-medium text-white text-center">
-                  {cap.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 lg:mt-4 text-[14px] lg:text-[15px] leading-[1.6] text-[#8F8F8F] text-center max-w-[480px]">
-                  {cap.shortDesc}
-                </p>
+                {/* Center Content */}
+                <div className="flex flex-col items-center flex-1 justify-center my-4 w-full">
+                  <h3 className="text-[24px] lg:text-[28px] font-medium text-white text-center mb-2">
+                    {cap.title}
+                  </h3>
+                  <p className="text-[14px] lg:text-[15px] leading-[1.6] text-[#8F8F8F] text-center max-w-[460px]">
+                    {cap.shortDesc}
+                  </p>
+                </div>
 
                 {/* View More */}
-                <div className="mt-auto pt-8 flex items-center justify-center gap-2 text-[12px] md:text-[13px] font-medium text-[rgba(255,255,255,0.65)] group-hover:text-white transition-colors duration-300">
+                <div className="flex items-center justify-center gap-2 text-[12px] md:text-[13px] font-medium text-[rgba(255,255,255,0.65)] group-hover:text-white transition-colors duration-300 mb-1">
                   <span>View More</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-80 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all duration-300" />
                 </div>
