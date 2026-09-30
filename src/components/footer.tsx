@@ -2,12 +2,15 @@ import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Footer() {
   return (
-    <footer className="bg-[#000000] border-t border-[var(--color-brand-border)] py-14 relative overflow-hidden">
+    <footer className="bg-[#000] border-t border-[rgba(255,255,255,0.08)] pt-[100px] pb-[32px] relative overflow-hidden">
       {/* Background glow spilling from contact */}
-      <SpectrumGlow 
-        className="bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[400px]"
-        opacity={0.06}
-      />
+      <div className="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[1100px] lg:w-[1400px] h-[800px] pointer-events-none z-0">
+        <SpectrumGlow 
+          variant="contact"
+          className="w-full h-full"
+          opacity={0.3}
+        />
+      </div>
 
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10">
@@ -23,14 +26,14 @@ export function Footer() {
                 <span className="text-[14px] font-normal tracking-[-0.01em] text-white leading-none">
                   HyperQube
                 </span>
-                <span className="text-[7px] font-normal tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
+                <span className="text-[7px] font-normal tracking-[0.18em] text-[#8A8A8A] uppercase leading-none mt-[2px]">
                   Software &bull; Data &bull; Intelligence
                 </span>
               </div>
             </div>
             <a
               href="mailto:hyperqube.ff@gmail.com"
-              className="text-[13px] text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-accent)] transition-colors"
+              className="text-[13px] text-[#8A8A8A] hover:text-[var(--color-brand-accent)] transition-colors"
             >
               hyperqube.ff@gmail.com
             </a>
@@ -47,7 +50,7 @@ export function Footer() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-normal tracking-[0.04em] uppercase text-[var(--color-brand-text-secondary)] hover:text-[var(--color-brand-accent)] transition-colors"
+                className="text-[13px] font-normal tracking-[0.04em] uppercase text-[#8A8A8A] hover:text-[var(--color-brand-accent)] transition-colors"
               >
                 {item.label}
               </a>
@@ -55,11 +58,11 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="pt-6 border-t border-[var(--color-brand-border)] flex justify-between items-center">
-          <p className="text-[12px] text-[var(--color-brand-text-secondary)]">
+        <div className="pt-6 border-t border-[rgba(255,255,255,0.08)] flex justify-between items-center">
+          <p className="text-[12px] text-[#8A8A8A]">
             &copy; {new Date().getFullYear()} HyperQube. All rights reserved.
           </p>
-          <p className="text-[12px] text-[var(--color-brand-text-secondary)] hidden md:block">
+          <p className="text-[12px] text-[#8A8A8A] hidden md:block">
             Engineering Studio
           </p>
         </div>

@@ -8,56 +8,54 @@ import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Contact() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
       id="contact"
-      className="pt-16 pb-12 lg:pt-24 lg:pb-16 bg-[var(--color-brand-bg)] relative overflow-hidden"
+      className="pt-[80px] lg:pt-[100px] pb-[100px] lg:pb-[120px] bg-black relative z-10 overflow-hidden"
     >
-      {/* Heavy spectrum glow emerging from the bottom */}
-      <div className="absolute bottom-[-30%] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-[2/1] pointer-events-none">
-        <SpectrumGlow 
-          variant="footer"
-          className="w-full h-full opacity-15"
-        />
-      </div>
-
-      <div
-        className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
+      <motion.div
         ref={ref}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="w-[92vw] md:w-[90vw] lg:w-[min(84vw,1240px)] max-w-[1240px] mx-auto bg-[rgba(8,8,8,0.92)] border border-[rgba(255,255,255,0.13)] rounded-[28px] lg:rounded-[32px] px-6 py-16 lg:px-[40px] lg:py-[80px] relative z-10 flex flex-col items-center text-center backdrop-blur-xl"
       >
-        <div className="relative py-12 lg:py-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
-          <div className="mb-12 lg:mb-14">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
-              Contact
-            </span>
-          </div>
-
-          <h2 className="text-[clamp(44px,6vw,72px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
-            <span>Ready to turn your</span>
-            <br className="hidden sm:block" />
-            <span>
-              ideas into <em className="font-editorial italic font-normal text-[clamp(48px,6.5vw,80px)] text-[var(--color-brand-text-secondary)]">reality?</em>
-            </span>
-          </h2>
-
-          <p className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[500px]">
-            If you want to achieve ground-breaking results with reliable software, intelligent systems, or digital products, then you're in the right place.
-          </p>
-
-          <motion.a
-            href="mailto:hyperqube.ff@gmail.com"
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-            variants={buttonReveal}
-            transition={{ delay: 1.0 }}
-            className="group inline-flex items-center gap-2.5 bg-[var(--color-brand-accent)] px-6 lg:px-8 py-3.5 lg:py-4 text-[16px] lg:text-[17px] font-medium text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300 rounded-lg justify-center hover:-translate-y-1"
-          >
-            Start a Project
-            <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
+        <div className="mb-7">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[rgba(255,255,255,0.13)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
+            Contact
+          </span>
         </div>
+
+        <h2 className="text-[clamp(48px,5.5vw,76px)] font-medium text-white leading-[1.0] tracking-[-0.04em] mb-7 lg:mb-8 max-w-[800px]">
+          <span>Ready to turn your</span>
+          <br className="hidden sm:block" />
+          <span>
+            ideas into <em className="font-editorial italic font-normal text-[clamp(52px,6vw,80px)] text-[#B0B0B0]">reality?</em>
+          </span>
+        </h2>
+
+        <p className="text-[17px] lg:text-[19px] text-[#A0A0A0] leading-[1.55] mb-8 lg:mb-9 max-w-[600px]">
+          If you want to achieve ground-breaking results with reliable software, intelligent systems, or digital products, then you're in the right place.
+        </p>
+
+        <a
+          href="mailto:hyperqube.ff@gmail.com"
+          className="group inline-flex items-center justify-center gap-2.5 bg-[var(--color-brand-accent)] px-7 lg:px-8 h-[52px] lg:h-[56px] text-[16px] font-medium text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300 rounded-[10px] lg:rounded-[12px] hover:-translate-y-1"
+        >
+          Start a Project
+          <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </motion.div>
+
+      {/* Heavy spectrum glow emerging from behind the bottom of the card */}
+      <div className="absolute bottom-[-180px] lg:bottom-[-240px] left-1/2 -translate-x-1/2 w-[1000px] lg:w-[1300px] h-[600px] lg:h-[700px] pointer-events-none z-0">
+        <SpectrumGlow 
+          variant="contact"
+          className="w-full h-full"
+          opacity={0.4}
+        />
       </div>
     </section>
   );
