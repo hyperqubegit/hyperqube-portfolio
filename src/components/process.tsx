@@ -40,19 +40,19 @@ export function Process() {
     <section
       id="process"
       ref={ref}
-      className="py-[100px] lg:py-[120px] bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
+      className="py-20 lg:py-24 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center max-w-[900px] mx-auto mb-20 lg:mb-24">
+        <div className="flex flex-col items-center text-center max-w-[900px] mx-auto">
           
           <motion.div 
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 16 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-10 lg:mb-12"
+            className="mb-10 lg:mb-11"
           >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Process
@@ -64,7 +64,7 @@ export function Process() {
             initial={{ opacity: 0, y: 20 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(52px,5.5vw,76px)] font-normal text-white leading-[1.0] mb-8"
+            className="text-[clamp(52px,5.5vw,76px)] font-normal text-white leading-[1.0] mb-6 lg:mb-7"
           >
             <span>How we turn</span>
             <br className="hidden sm:block" />
@@ -86,7 +86,7 @@ export function Process() {
         </div>
 
         {/* 3-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-[60px] max-w-[1200px] mx-auto mb-24 lg:mb-[90px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-[1200px] mx-auto mt-14 lg:mt-16">
           {PROCESS_STEPS.map((step, i) => (
             <motion.div
               key={step.num}
@@ -97,18 +97,18 @@ export function Process() {
               className="flex flex-col items-center text-center"
             >
               {/* Number */}
-              <span className="text-[12px] font-mono text-[rgba(255,255,255,0.3)] tracking-widest mb-5">
+              <span className="text-[12px] font-mono text-[rgba(255,255,255,0.3)] tracking-widest mb-4">
                 {step.num}
               </span>
 
               {/* Icon */}
-              <div className="relative mb-6">
-                <step.icon className="w-12 h-12 lg:w-[52px] lg:h-[52px] text-[#D0D0D0]" strokeWidth={1.8} />
+              <div className="relative mb-5">
+                <step.icon className="w-11 h-11 lg:w-12 lg:h-12 text-[#D0D0D0]" strokeWidth={1.8} />
                 <div className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-[#FF4B3E] opacity-70" />
               </div>
 
               {/* Title */}
-              <h3 className="text-[22px] lg:text-[25px] font-medium text-white mb-3 lg:mb-3.5">
+              <h3 className="text-[22px] lg:text-[25px] font-medium text-white mb-3">
                 {step.title}
               </h3>
               
@@ -126,7 +126,7 @@ export function Process() {
           initial={{ opacity: 0, y: 20 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-[1320px] mx-auto"
+          className="relative w-full max-w-[1320px] mx-auto mt-[72px] lg:mt-[80px]"
         >
           {/* Subtle Spectrum behind video */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none opacity-20 -z-10">
