@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Search, Layers, Rocket } from "lucide-react";
-import { fadeUp, textReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
 const PROCESS_STEPS = [
@@ -42,58 +41,80 @@ export function Process() {
     <section
       id="process"
       ref={ref}
-      className="py-16 lg:py-24 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
+      className="py-20 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+        
         {/* Header */}
-        <div className="mb-12 flex flex-col items-center text-center max-w-[800px] mx-auto">
-          <div className="mb-10">
+        <div className="flex flex-col items-center text-center max-w-[800px] mx-auto mb-20 lg:mb-28">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12 lg:mb-16"
+          >
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Process
             </span>
-          </div>
+          </motion.div>
           
-          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(48px,6vw,82px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8 lg:mb-10"
+          >
             <span>How we turn</span>
             <br className="hidden sm:block" />
             <span>
-              <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">ideas </em>
+              <em className="font-editorial italic font-normal text-[clamp(52px,6.5vw,90px)] text-[var(--color-brand-text-secondary)]">ideas </em>
               into something real.
             </span>
-          </h2>
+          </motion.h2>
           
-          <p className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[560px]">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[600px]"
+          >
             From the first conversation to the final launch, we keep the process clear, focused, and built around what your business actually needs.
-          </p>
+          </motion.p>
         </div>
 
         {/* 3-Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-16 lg:mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-12 mb-20 lg:mb-28">
           {PROCESS_STEPS.map((step, i) => (
             <motion.div
               key={step.num}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.2 + (i * 0.15), ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col items-center text-center md:items-start md:text-left"
+              className="group flex flex-col items-center text-center max-w-[340px] mx-auto"
             >
-              <div className="flex items-center gap-4 mb-8 w-full justify-center md:justify-start">
-                <span className="text-[14px] font-mono text-[var(--color-brand-text-muted)] group-hover:text-[var(--color-brand-text)] transition-colors duration-500">
+              {/* Icon & Number */}
+              <div className="flex flex-col items-center gap-4 mb-8">
+                <span className="text-[12px] font-mono text-[var(--color-brand-text-very-muted)] tracking-widest transition-colors duration-500 group-hover:text-[var(--color-brand-text-muted)]">
                   {step.num}
                 </span>
-                <div className="h-[1px] flex-1 bg-[var(--color-brand-border)] max-w-[60px] md:max-w-none" />
+                <div className="relative">
+                  <step.icon className="w-12 h-12 lg:w-14 lg:h-14 text-[var(--color-brand-text-secondary)] transition-all duration-500 transform group-hover:scale-105 group-hover:-translate-y-1 group-hover:text-white" strokeWidth={1.2} />
+                  <div className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] opacity-40 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_8px_rgba(255,75,62,0)] group-hover:shadow-[0_0_8px_rgba(255,75,62,0.6)]" />
+                </div>
               </div>
 
-              <div className="w-16 h-16 rounded-2xl bg-[#080808] border border-[rgba(255,255,255,0.08)] flex items-center justify-center mb-8 transform transition-all duration-500 group-hover:-translate-y-2 group-hover:border-[rgba(255,75,62,0.3)] group-hover:shadow-[0_8px_24px_rgba(255,75,62,0.1)] relative">
-                <step.icon className="w-6 h-6 text-white transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
-                <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] opacity-50 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_8px_rgba(255,75,62,0)] group-hover:shadow-[0_0_8px_rgba(255,75,62,0.8)]" />
-              </div>
-
-              <h3 className="text-[16px] font-medium tracking-[0.1em] text-[var(--color-brand-text)] uppercase mb-4 transform transition-transform duration-500 group-hover:translate-x-1">
+              {/* Title */}
+              <h3 className="text-[24px] lg:text-[28px] font-medium tracking-[-0.01em] text-[var(--color-brand-text)] mb-4 transform transition-transform duration-500 group-hover:-translate-y-1">
                 {step.title}
               </h3>
               
-              <p className="text-[16px] text-[var(--color-brand-text-secondary)] leading-[1.65]">
+              {/* Description */}
+              <p className="text-[16px] lg:text-[17px] text-[var(--color-brand-text-secondary)] leading-[1.65]">
                 {step.desc}
               </p>
             </motion.div>
