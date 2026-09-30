@@ -85,7 +85,7 @@ export function SpectrumGlow({ className, opacity = 1, variant = "section" }: Sp
               variants={animViolet}
               initial="hidden"
               animate={["show", "float"]}
-              className={cn(`absolute w-[120%] h-[120%] bg-[rgba(130,70,220,0.7)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
+              className={cn(`absolute w-[100%] h-[100%] bg-[rgba(130,70,220,0.15)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
               style={{ transform: "translate(10%, 20%)" }}
             />
             {/* Layer: Cyan/Blue (Bottom Left) */}
@@ -93,7 +93,7 @@ export function SpectrumGlow({ className, opacity = 1, variant = "section" }: Sp
               variants={animCyan}
               initial="hidden"
               animate={["show", "float"]}
-              className={cn(`absolute w-[110%] h-[110%] bg-[rgba(30,100,255,0.6)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
+              className={cn(`absolute w-[90%] h-[90%] bg-[rgba(30,100,255,0.15)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
               style={{ transform: "translate(-15%, 15%)" }}
             />
             {/* Layer: Orange/Yellow (Top Left / Center) */}
@@ -101,7 +101,7 @@ export function SpectrumGlow({ className, opacity = 1, variant = "section" }: Sp
               variants={animOrange}
               initial="hidden"
               animate={["show", "float"]}
-              className={cn(`absolute w-[100%] h-[100%] bg-[rgba(255,140,40,0.65)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
+              className={cn(`absolute w-[85%] h-[85%] bg-[rgba(255,140,40,0.25)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
               style={{ transform: "translate(-10%, -10%)" }}
             />
             {/* Layer: Magenta/Red (Top Right) */}
@@ -109,7 +109,7 @@ export function SpectrumGlow({ className, opacity = 1, variant = "section" }: Sp
               variants={animRed}
               initial="hidden"
               animate={["show", "float"]}
-              className={cn(`absolute w-[80%] h-[90%] bg-[rgba(255,45,100,0.55)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
+              className={cn(`absolute w-[70%] h-[80%] bg-[rgba(255,45,100,0.2)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
               style={{ transform: "translate(15%, -15%)" }}
             />
             {/* Layer: Warm White Center */}
@@ -117,7 +117,7 @@ export function SpectrumGlow({ className, opacity = 1, variant = "section" }: Sp
               variants={animWhite}
               initial="hidden"
               animate={["show", "float"]}
-              className={cn(`absolute w-[50%] h-[60%] bg-[rgba(255,245,230,0.85)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
+              className={cn(`absolute w-[45%] h-[55%] bg-[rgba(255,245,230,0.35)] rounded-[9999px] ${mixBlend} ${baseBlur}`)}
             />
           </>
         ) : (

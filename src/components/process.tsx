@@ -135,7 +135,7 @@ export function Process() {
           initial={{ opacity: 0, y: 20 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-[1320px] mx-auto mt-16 lg:mt-20"
+          className="relative w-full max-w-[1320px] mx-auto mt-12 lg:mt-16"
         >
           {/* Subtle Spectrum behind video */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] pointer-events-none opacity-20 -z-10">

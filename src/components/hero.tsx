@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[88vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-visible"
+      className="relative min-h-[80vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-visible"
     >
       {/* Spectrum Atmospheric Glow */}
       <motion.div 

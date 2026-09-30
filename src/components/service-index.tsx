@@ -65,14 +65,14 @@ export function ServiceIndex() {
   }, [selectedService]);
 
   return (
-    <section id="what-we-build" className="py-16 lg:py-24 bg-[var(--color-brand-bg)] relative overflow-hidden">
+    <section id="what-we-build" className="py-16 lg:py-20 bg-[var(--color-brand-bg)] relative overflow-hidden">
       <div
         className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
         ref={containerRef}
       >
         {/* ── Heading ── */}
-        <div className="mb-12 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
-          <div className="mb-8 lg:mb-10">
+        <div className="mb-10 lg:mb-12 flex flex-col items-center text-center max-w-[800px] mx-auto">
+          <div className="mb-6 lg:mb-8">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               What We Build
             </span>
@@ -93,7 +93,7 @@ export function ServiceIndex() {
         </div>
 
         {/* ── Service Cards Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px] lg:gap-[22px]">
           {CAPABILITIES.map((cap, i) => (
             <motion.div
               key={cap.num}
@@ -101,7 +101,7 @@ export function ServiceIndex() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.08 * i }}
               className={cn(
-                "group relative bg-[#090909] border border-[rgba(255,255,255,0.09)] rounded-[20px] overflow-hidden transition-all duration-500 hover:-translate-y-[3px] hover:border-[rgba(255,255,255,0.16)] flex flex-col cursor-pointer min-h-[270px] lg:min-h-[280px]",
+                "group relative bg-[#090909] border border-[rgba(255,255,255,0.09)] rounded-[20px] overflow-hidden transition-all duration-500 hover:-translate-y-[3px] hover:border-[rgba(255,255,255,0.16)] flex flex-col cursor-pointer min-h-[240px] lg:min-h-[260px]",
                 getColSpan(i)
               )}
               onClick={() => setSelectedService(cap)}

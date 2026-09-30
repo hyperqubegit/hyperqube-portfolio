@@ -30,11 +30,11 @@ export function Principles() {
   return (
     <section
       ref={containerRef}
-      className="py-16 lg:py-24 bg-[var(--color-brand-bg)] relative border-t border-[var(--color-brand-border)] overflow-hidden"
+      className="py-16 lg:py-20 bg-[var(--color-brand-bg)] relative border-t border-[var(--color-brand-border)] overflow-hidden"
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-        <div className="mb-12 lg:mb-16 flex flex-col items-center text-center">
-          <div className="mb-10">
+        <div className="mb-10 lg:mb-12 flex flex-col items-center text-center">
+          <div className="mb-6 lg:mb-8">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Built Around Your Goals
             </span>

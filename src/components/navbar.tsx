@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { HyperQubeLogo } from "@/components/hyperqube-logo";
 
 const NAV_ITEMS = [
   { label: "Services", href: "#services" },
@@ -46,20 +47,8 @@ export function Navbar() {
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 h-full flex items-center justify-between">
         {/* Brand */}
-        <a href="#" className="flex items-center gap-2.5" onClick={closeMobile}>
-          <div className="w-7 h-7 bg-[var(--color-brand-text)] rounded-[4px] flex items-center justify-center shrink-0">
-            <span className="text-[var(--color-brand-bg)] text-[9px] font-normal tracking-tight leading-none">
-              HQ
-            </span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-[14px] font-normal tracking-[-0.01em] text-[var(--color-brand-text)] leading-none">
-              HyperQube
-            </span>
-            <span className="text-[7px] font-normal tracking-[0.18em] text-[var(--color-brand-text-secondary)] uppercase leading-none mt-[2px]">
-              Software &bull; Data &bull; Intelligence
-            </span>
-          </div>
+        <a href="#" className="flex items-center" onClick={closeMobile}>
+          <HyperQubeLogo className="h-[28px] md:h-[30px] w-auto" />
         </a>
 
         {/* Desktop nav */}

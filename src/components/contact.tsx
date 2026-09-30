@@ -2,8 +2,7 @@
 
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
-import { motion, useInView } from "framer-motion";
-import { textReveal, buttonReveal } from "@/lib/motion";
+import { motion } from "framer-motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
 export function Contact() {
@@ -12,7 +11,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="pt-[80px] lg:pt-[100px] pb-[100px] lg:pb-[120px] bg-black relative z-10 overflow-hidden"
+      className="pt-16 lg:pt-20 pb-[80px] lg:pb-[100px] bg-black relative z-10 overflow-hidden"
     >
       <motion.div
         ref={ref}
@@ -20,7 +19,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-[92vw] md:w-[90vw] lg:w-[min(84vw,1240px)] max-w-[1240px] mx-auto bg-[rgba(8,8,8,0.92)] border border-[rgba(255,255,255,0.13)] rounded-[28px] lg:rounded-[32px] px-6 py-16 lg:px-[40px] lg:py-[80px] relative z-10 flex flex-col items-center text-center backdrop-blur-xl"
+        className="w-[92vw] md:w-[90vw] lg:w-[min(84vw,1240px)] max-w-[1280px] mx-auto bg-[rgba(8,8,8,0.92)] border border-[rgba(255,255,255,0.13)] rounded-[28px] lg:rounded-[32px] px-6 py-12 lg:px-[40px] lg:py-[56px] relative z-10 flex flex-col items-center text-center backdrop-blur-xl"
       >
         <div className="mb-7">
           <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[rgba(255,255,255,0.13)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
@@ -37,7 +36,7 @@ export function Contact() {
         </h2>
 
         <p className="text-[17px] lg:text-[19px] text-[#A0A0A0] leading-[1.55] mb-8 lg:mb-9 max-w-[600px]">
-          If you want to achieve ground-breaking results with reliable software, intelligent systems, or digital products, then you're in the right place.
+          If you want to achieve ground-breaking results with reliable software, intelligent systems, or digital products, then you&apos;re in the right place.
         </p>
 
         <a
@@ -50,11 +49,11 @@ export function Contact() {
       </motion.div>
 
       {/* Heavy spectrum glow emerging from behind the bottom of the card */}
-      <div className="absolute bottom-[-180px] lg:bottom-[-240px] left-1/2 -translate-x-1/2 w-[1000px] lg:w-[1300px] h-[600px] lg:h-[700px] pointer-events-none z-0">
+      <div className="absolute bottom-[-180px] left-1/2 -translate-x-1/2 w-[900px] lg:w-[1100px] h-[500px] lg:h-[650px] pointer-events-none z-0">
         <SpectrumGlow 
           variant="contact"
           className="w-full h-full"
-          opacity={0.4}
+          opacity={0.25}
         />
       </div>
     </section>
