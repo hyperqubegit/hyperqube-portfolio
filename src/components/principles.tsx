@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, X } from "lucide-react";
-import { BlurryText } from "@/components/blurry-text";
 import { fadeUp } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 import { cn } from "@/lib/utils";
@@ -35,28 +34,19 @@ export function Principles() {
     >
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <div className="mb-12 lg:mb-16 flex flex-col items-center text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-10"
-          >
+          <div className="mb-10">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Built Around Your Goals
             </span>
-          </motion.div>
+          </div>
           
-          <BlurryText 
-            as="h2" 
-            delay={0.1}
-            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
-          >
+          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
             <span>Engineering with</span>
             <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">Purpose.</em>
             </span>
-          </BlurryText>
+          </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">

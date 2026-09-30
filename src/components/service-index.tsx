@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { CAPABILITIES } from "../data/capabilities";
 import { cn } from "@/lib/utils";
-import { BlurryText } from "@/components/blurry-text";
 import { fadeUp, textReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
@@ -38,46 +37,31 @@ export function ServiceIndex() {
   };
 
   return (
-    <section id="what-we-build" className="py-20 lg:py-28 bg-[var(--color-brand-bg)] relative overflow-hidden">
+    <section id="what-we-build" className="py-16 lg:py-24 bg-[var(--color-brand-bg)] relative overflow-hidden">
       <div
         className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10"
         ref={containerRef}
       >
         {/* ── Heading ── */}
-        <div className="mb-14 lg:mb-20 flex flex-col items-center text-center max-w-[800px] mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-14"
-          >
+        <div className="mb-12 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
+          <div className="mb-8 lg:mb-10">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               What We Build
             </span>
-          </motion.div>
+          </div>
           
-          <BlurryText 
-            as="h2" 
-            delay={0.1}
-            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]"
-          >
+          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05]">
             <span>What can we</span>
             <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">build for you?</em>
             </span>
-          </BlurryText>
+          </h2>
 
-          <motion.p
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-            variants={textReveal}
-            transition={{ delay: 0.8 }}
-            className="mt-8 text-[16px] text-[var(--color-brand-text-secondary)] max-w-[600px] mx-auto"
-          >
+          <p className="mt-6 text-[16px] text-[var(--color-brand-text-secondary)] max-w-[600px] mx-auto">
             From first idea to production-ready systems, we build the technology
             your business actually needs.
-          </motion.p>
+          </p>
         </div>
 
         {/* ── Service Cards Grid ── */}
@@ -89,7 +73,7 @@ export function ServiceIndex() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 * i }}
               className={cn(
-                "group relative bg-[var(--color-brand-card)] border border-[var(--color-brand-border)] rounded-2xl p-10 lg:p-14 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)]",
+                "group relative bg-[var(--color-brand-card)] border border-[var(--color-brand-border)] rounded-2xl p-8 lg:p-12 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:border-[rgba(255,255,255,0.15)]",
                 getColSpan(i)
               )}
             >

@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { BlurryText } from "@/components/blurry-text";
 import { fadeUp, mediaReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
@@ -38,45 +37,26 @@ export function Hero() {
           style={{ y: textY }}
           className="relative z-10"
         >
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-3 mb-8"
-          >
+          <div className="flex items-center gap-3 mb-8">
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               Turn your ideas into reality
             </span>
-          </motion.div>
+          </div>
 
-          <BlurryText 
-            as="h1" 
-            delay={0.2}
-            className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8"
-          >
+          <h1 className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8">
             <span>Have an Idea?</span>
             <br />
             <span>
               <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)]">We&apos;ll Build It.</em>
             </span>
-          </BlurryText>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[17px] lg:text-[19px] font-normal text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]"
-          >
+          <p className="text-[17px] lg:text-[19px] font-normal text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]">
             Custom software, digital products, intelligent systems, and
             data-driven solutions built around your business.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 1.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-5"
-          >
+          <div className="flex flex-wrap items-center gap-5">
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 bg-[var(--color-brand-accent)] px-7 py-3.5 text-[14px] font-normal text-white hover:bg-[var(--color-brand-accent-light)] transition-all duration-300"
@@ -91,14 +71,15 @@ export function Hero() {
               Explore What We Build
               <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </a>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* ── Right: Editorial photo card ── */}
         <motion.div
           variants={mediaReveal}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
           style={{ y: imgY }}
           className="hidden lg:block relative"
         >
@@ -116,17 +97,14 @@ export function Hero() {
           </div>
 
           {/* Small floating label */}
-          <motion.div
-            initial={{ opacity: 0, x: 16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+          <div
             className="absolute -left-6 bottom-16 bg-[var(--color-brand-panel)] border border-[rgba(255,255,255,0.1)] px-5 py-3.5 shadow-2xl rounded-sm flex items-center gap-3"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--color-brand-accent)]" />
             <span className="text-[11px] font-normal tracking-[0.18em] text-[var(--color-brand-text)] uppercase">
               Engineering Studio
             </span>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

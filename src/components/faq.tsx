@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BlurryText } from "@/components/blurry-text";
 import { fadeUp, textReveal } from "@/lib/motion";
 import { SpectrumGlow } from "@/components/spectrum-glow";
 
@@ -51,7 +50,7 @@ export function Faq() {
   return (
     <section
       ref={ref}
-      className="py-24 lg:py-32 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
+      className="py-16 lg:py-24 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
       {/* Subtle Spectrum Bloom */}
       <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] pointer-events-none opacity-30">
@@ -59,39 +58,24 @@ export function Faq() {
       </div>
 
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-        <div className="mb-14 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-12"
-          >
+        <div className="mb-12 lg:mb-16 flex flex-col items-center text-center max-w-[800px] mx-auto">
+          <div className="mb-10">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#101010] border border-[var(--color-brand-border)] text-[11px] font-medium tracking-[0.1em] text-white uppercase">
               FAQ
             </span>
-          </motion.div>
+          </div>
           
-          <BlurryText 
-            as="h2" 
-            delay={0.1}
-            className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8"
-          >
+          <h2 className="text-[clamp(40px,5vw,64px)] font-medium tracking-[-0.03em] text-[var(--color-brand-text)] leading-[1.05] mb-8">
             <span>Questions,</span>
             <br className="hidden sm:block" />
             <span>
               <em className="font-editorial italic font-normal text-[clamp(44px,5.5vw,72px)] text-[var(--color-brand-text-secondary)]">before we build?</em>
             </span>
-          </BlurryText>
+          </h2>
           
-          <motion.p
-            initial="hidden"
-            animate={isInView ? "show" : "hidden"}
-            variants={textReveal}
-            transition={{ delay: 0.8 }}
-            className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[500px]"
-          >
+          <p className="text-[17px] lg:text-[19px] text-[var(--color-brand-text-secondary)] leading-[1.65] max-w-[500px]">
             A few things people usually want to know before starting a project with HyperQube.
-          </motion.p>
+          </p>
         </div>
 
         <div className="max-w-[1100px] mx-auto flex flex-col gap-4">
