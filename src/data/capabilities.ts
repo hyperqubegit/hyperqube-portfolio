@@ -27,7 +27,7 @@ export const CAPABILITIES: Capability[] = [
     num: "01",
     title: "Web Applications",
     icon: Layout,
-    size: "lg",
+    size: "md",
     shortDesc:
       "Modern, responsive and high-performance web applications built around your business.",
     longDesc:
@@ -85,29 +85,9 @@ export const CAPABILITIES: Capability[] = [
   },
   {
     num: "04",
-    title: "Data & Analytics",
-    icon: LineChart,
-    size: "md",
-    shortDesc:
-      "Dashboards, analytics systems and data solutions that turn raw information into useful insights.",
-    longDesc:
-      "We build data systems that turn raw information into actionable insights through clear visual dashboards and reliable analytics pipelines.",
-    solutions: [
-      "Analytics dashboards",
-      "Reporting systems",
-      "Data pipelines",
-      "Business intelligence tools",
-      "Real-time monitoring",
-      "Data visualization",
-    ],
-    technologies: ["PostgreSQL", "Python", "Firebase", "Supabase", "D3.js"],
-    builtFor: ["Businesses", "Analysts", "Operations teams"],
-  },
-  {
-    num: "05",
-    title: "AI & Intelligent Systems",
+    title: "AI Solutions",
     icon: Zap,
-    size: "lg",
+    size: "md",
     shortDesc:
       "Practical AI solutions, intelligent workflows and AI-powered features that create measurable value.",
     longDesc:
@@ -124,36 +104,30 @@ export const CAPABILITIES: Capability[] = [
     builtFor: ["Businesses", "Product teams", "Organizations with data"],
   },
   {
-    num: "06",
-    title: "Automation",
-    icon: Settings,
+    num: "05",
+    title: "Data & Automation",
+    icon: LineChart,
     size: "md",
     shortDesc:
-      "Workflow automation that reduces repetitive work, improves efficiency and connects business processes.",
+      "Dashboards, analytics systems, and automated workflows that turn data into insights and efficiency.",
     longDesc:
-      "Workflow automation that eliminates repetitive manual work, improves operational efficiency and connects disconnected business processes.",
+      "We build data systems and automation pipelines that turn raw information into actionable insights while eliminating manual repetitive work.",
     solutions: [
+      "Analytics dashboards",
       "Process automation",
+      "Data pipelines",
+      "Business intelligence tools",
       "Integration workflows",
       "Automated reporting",
-      "Notification systems",
-      "Data synchronization",
-      "Task orchestration",
     ],
-    technologies: [
-      "Node.js",
-      "Python",
-      "APIs",
-      "Webhooks",
-      "Cloud Functions",
-    ],
-    builtFor: ["Businesses", "Operations teams", "Growing companies"],
+    technologies: ["Python", "PostgreSQL", "Node.js", "APIs", "Cloud Functions"],
+    builtFor: ["Businesses", "Operations teams", "Analysts"],
   },
   {
-    num: "07",
+    num: "06",
     title: "UI/UX Design",
     icon: PenTool,
-    size: "lg",
+    size: "md",
     shortDesc:
       "Clean, modern and user-focused product interfaces designed around usability and conversion.",
     longDesc:
@@ -171,30 +145,6 @@ export const CAPABILITIES: Capability[] = [
       "Startups",
       "Product teams",
       "Businesses launching digital products",
-    ],
-  },
-  {
-    num: "08",
-    title: "Backend & APIs",
-    icon: Server,
-    size: "lg",
-    shortDesc:
-      "Secure, scalable backend systems, APIs, databases and integrations powering modern applications.",
-    longDesc:
-      "Secure, scalable backend systems that power modern applications with reliable data management, authentication and third-party integrations.",
-    solutions: [
-      "REST & GraphQL APIs",
-      "Database architecture",
-      "Authentication systems",
-      "Third-party integrations",
-      "Microservices",
-      "Real-time systems",
-    ],
-    technologies: ["Node.js", "Python", "PostgreSQL", "Firebase", "GraphQL"],
-    builtFor: [
-      "Startups",
-      "Product teams",
-      "Businesses needing integrations",
     ],
   },
 ];
