@@ -21,6 +21,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
+      aria-label="HyperQube Engineering Studio - Custom Software Development"
       className="relative min-h-[80vh] flex items-center pt-20 pb-16 lg:pt-0 lg:pb-0 bg-[var(--color-brand-bg)] overflow-visible"
     >
       {/* Spectrum Atmospheric Glow */}
@@ -43,13 +44,13 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8">
+          <h2 className="text-[clamp(64px,7vw,118px)] font-normal tracking-[-0.04em] text-[var(--color-brand-text)] leading-[0.98] mb-8">
             <span>Have an Idea?</span>
             <br />
             <span>
               <em className="font-editorial italic font-normal tracking-[-0.02em] text-[clamp(68px,7.5vw,126px)] text-[var(--color-brand-text)]">We&apos;ll Build It.</em>
             </span>
-          </h1>
+          </h2>
 
           <p className="text-[17px] lg:text-[19px] font-normal text-[var(--color-brand-text-secondary)] leading-[1.65] mb-12 max-w-[480px]">
             Custom software, digital products, intelligent systems, and
@@ -110,7 +111,7 @@ export function Hero() {
           <div className="relative rounded-xl overflow-hidden aspect-[4/5] border border-[rgba(255,255,255,0.15)] bg-[var(--color-brand-card)] shadow-2xl">
             <img
               src="/office.avif"
-              alt="HyperQube team at work"
+              alt="HyperQube software engineering team building custom web applications, SaaS products, and AI solutions"
               className="absolute inset-0 w-full h-[110%] object-cover opacity-95"
             />
           </div>

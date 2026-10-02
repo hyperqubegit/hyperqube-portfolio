@@ -49,7 +49,9 @@ export function Faq() {
 
   return (
     <section
+      id="faq"
       ref={ref}
+      aria-label="Frequently Asked Questions about HyperQube"
       className="py-16 lg:py-20 bg-[var(--color-brand-bg)] border-t border-[var(--color-brand-border)] relative overflow-hidden"
     >
       {/* Subtle Spectrum Bloom */}

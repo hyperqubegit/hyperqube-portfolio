@@ -64,7 +64,7 @@ export function ServiceIndex() {
   }, [selectedService]);
 
   return (
-    <section id="what-we-build" className="py-16 lg:py-20 bg-[var(--color-brand-bg)] relative overflow-hidden">
+    <section id="what-we-build" aria-label="HyperQube Software Development Services" className="py-16 lg:py-20 bg-[var(--color-brand-bg)] relative overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         {/* ── Heading ── */}
         <div className="mb-10 lg:mb-12 flex flex-col items-center text-center max-w-[800px] mx-auto">
